@@ -52,7 +52,6 @@ public class AutorController {
 		
 		Autor Autor_seleccionado= new Autor();
 		Autor Autor_actualizado= new Autor();
-		
 		Autor_seleccionado= AutorServiceImpl.AutorXID(id);
 		Autor_seleccionado.setNombre(Autor.getNombre());
 		Autor_seleccionado.setApellido(Autor.getApellido());
