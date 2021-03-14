@@ -12,9 +12,3 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Libro {
-
-
-	}
-
-

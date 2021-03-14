@@ -6,5 +6,3 @@ import es.http.service.dto.Libro;
 
 public interface ILibroService {
 
-
-}
