@@ -12,16 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import es.http.service.service.LibroServiceImpl;
-
-
-import es.http.service.dto.Libro;
-
-@RestController
-@RequestMapping("/api")
-
 public class LibroController {
+	
 
 	@Autowired
 	LibroServiceImpl libroServiceImpl;
