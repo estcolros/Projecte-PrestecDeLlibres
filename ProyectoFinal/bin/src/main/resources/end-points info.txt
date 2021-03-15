@@ -1,0 +1,8 @@
+	#Se lanza una petición de login
+	curl -i -H "Content-Type: application/json" -X POST -d '{ "username": "admin", "password": "password"}' http://localhost:8080/login
+	
+	# Recuperamos los usuarios dados de alta
+	curl -H "Authorization: Bearer xxx.yyy.zzz" http://localhost:8080/users/
+	
+	# Damos de alta un nuevo usuario
+	curl -i -H 'Content-Type: application/json' -H 'Authorization: Bearer xxx.yyy.zzz' -X POST -d '{ "username": "jose", "password": "1234"}' http://localhost:8080/users/
