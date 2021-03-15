@@ -18,5 +18,3 @@ public interface INotificacionService {
 	public void eliminarNotificacion(int id);// Elimina el notificacion DELETE
 
 }
-
-

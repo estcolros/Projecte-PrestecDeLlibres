@@ -35,6 +35,7 @@ public class Libro {
 	@JoinColumn(name = "cod_ejemplar")
 	private List<Ejemplar> ejemplar;
 
+	// Constructores
 	/**
 	 * 
 	 */
@@ -61,6 +62,7 @@ public class Libro {
 		this.ejemplar = ejemplar;
 	}
 
+	// Getters y Setters
 	/**
 	 * @param id the id to set
 	 */
@@ -147,6 +149,7 @@ public class Libro {
 		return ejemplar;
 	}
 
+	// Método ToString
 	@Override
 	public String toString() {
 		return "Autor [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha=" + fecha + ", isbn=" + isbn

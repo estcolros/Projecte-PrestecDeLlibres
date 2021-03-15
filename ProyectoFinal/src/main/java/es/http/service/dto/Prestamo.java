@@ -33,6 +33,7 @@ public class Prestamo {
 	@JoinColumn(name = "cod_notificacion")
 	private List<Notificacion> notificacion;
 
+	// Constructores
 	/**
 	 * 
 	 */
@@ -58,6 +59,7 @@ public class Prestamo {
 		this.notificacion = notificacion;
 	}
 
+	// Getters y Setters
 	/**
 	 * @return the id
 	 */
@@ -130,6 +132,7 @@ public class Prestamo {
 		this.notificacion = notificacion;
 	}
 
+	// Método ToString
 	@Override
 	public String toString() {
 		return "Prestamo [id=" + id + ", fechacaducidad=" + fechacaducidad + ", fechaalta=" + fechaalta

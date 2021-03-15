@@ -5,9 +5,11 @@ import java.util.List;
 import es.http.service.dao.INotificacionDAO;
 import es.http.service.dto.Notificacion;
 
+//Implementamos los métodos del service.
 public class NotificacionServiceImpl implements INotificacionService {
 
 	INotificacionDAO iNotificacionDAO;
+
 	@Override
 	public List<Notificacion> listarNotificacion() {
 		// TODO Auto-generated method stub

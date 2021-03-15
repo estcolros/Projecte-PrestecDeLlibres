@@ -31,6 +31,7 @@ public class Notificacion {
 	@JoinColumn(name = "cod_notificacion")
 	private List<Trabajador> trabajador;
 
+	// Constructores
 	/**
 	 * 
 	 */
@@ -53,6 +54,7 @@ public class Notificacion {
 		this.trabajador = trabajador;
 	}
 
+	// Getters y Setters
 	/**
 	 * @return the id
 	 */
@@ -111,6 +113,7 @@ public class Notificacion {
 		this.trabajador = trabajador;
 	}
 
+	// Método ToString
 	@Override
 	public String toString() {
 		return "Notificacion [id=" + id + ", mensaje=" + mensaje + ", leido=" + leido + ", trabajador=" + trabajador

@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import es.http.service.service.LibroServiceImpl;
-
 
 import es.http.service.dto.Libro;
 
@@ -49,15 +47,13 @@ public class LibroController {
 		return Libro_xid;
 	}
 
-	@PutMapping("/libros/{id}")
-	public Libro actualizarEquipo(@PathVariable(name = "id") int id, @RequestBody Libro libro) {
+	@PutMapping("/libro/{id}")
+	public Libro actualizarLibro(@PathVariable(name = "id") int id, @RequestBody Libro libro) {
 
 		Libro Libro_seleccionado = new Libro();
 		Libro Libro_actualizado = new Libro();
-		
-	
+
 		Libro_seleccionado = libroServiceImpl.LibroXID(id);
-		
 
 		Libro_seleccionado.setTitulo(libro.getTitulo());
 		Libro_seleccionado.setGenero(libro.getGenero());
@@ -72,11 +68,8 @@ public class LibroController {
 		return Libro_actualizado;
 	}
 
-	@DeleteMapping("/libros/{id}")
+	@DeleteMapping("/libro/{id}")
 	public void eleiminarLibro(@PathVariable(name = "id") int id) {
 		libroServiceImpl.eliminarLibro(id);
 	}
-	}
-
-	
-
+}

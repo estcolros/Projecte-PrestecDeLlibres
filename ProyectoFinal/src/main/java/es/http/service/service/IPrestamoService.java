@@ -5,6 +5,7 @@ import java.util.List;
 import es.http.service.dto.Prestamo;
 
 public interface IPrestamoService {
+	
 	// Metodos del CRUD
 	public List<Prestamo> listarPrestamo(); // Listar All
 

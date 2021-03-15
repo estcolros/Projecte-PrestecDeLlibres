@@ -45,20 +45,18 @@ public class NotificacionController {
 		return Notificacion_xid;
 	}
 
-	@PutMapping("/notificaciones/{id}")
-	public Notificacion actualizarEquipo(@PathVariable(name = "id") int id, @RequestBody Notificacion Notificacion) {
+	@PutMapping("/notificacion/{id}")
+	public Notificacion actualizarNotificacion(@PathVariable(name = "id") int id, @RequestBody Notificacion Notificacion) {
 
 		Notificacion Notificacion_seleccionado = new Notificacion();
 		Notificacion Notificacion_actualizado = new Notificacion();
 
 		Notificacion_seleccionado = NotificacionServiceImpl.NotificacionXID(id);
 
-
 		Notificacion_seleccionado.setTrabajador(Notificacion.getTrabajador());
 		Notificacion_seleccionado.setLeido(Notificacion.getLeido());
 		Notificacion_seleccionado.setMensaje(Notificacion.getMensaje());
 		Notificacion_seleccionado.setId(Notificacion.getId());
-
 
 		Notificacion_actualizado = NotificacionServiceImpl.actualizarNotificacion(Notificacion_seleccionado);
 
@@ -67,7 +65,7 @@ public class NotificacionController {
 		return Notificacion_actualizado;
 	}
 
-	@DeleteMapping("/notificaciones/{id}")
+	@DeleteMapping("/notificacion/{id}")
 	public void eleiminarNotificacion(@PathVariable(name = "id") int id) {
 		NotificacionServiceImpl.eliminarNotificacion(id);
 	}
