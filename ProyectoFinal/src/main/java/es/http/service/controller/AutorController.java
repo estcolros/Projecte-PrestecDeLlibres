@@ -28,6 +28,7 @@ public class AutorController {
 	}
 
 	@PostMapping("autores")
+
 	public Autor salvarAutor(@RequestBody Autor Autor) {
 
 		return AutorServiceImpl.guardarAutor(Autor);
