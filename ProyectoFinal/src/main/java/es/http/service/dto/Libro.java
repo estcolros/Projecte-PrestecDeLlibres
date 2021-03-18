@@ -32,8 +32,8 @@ public class Libro {
 	private int isbn;
 
 	@OneToMany
-	@JoinColumn(name = "cod_ejemplar")
-	private List<Ejemplar> ejemplar;
+	@JoinColumn(name = "cod_editorial")
+	private List<Editorial> editorial;
 
 	// Constructores
 	/**
@@ -52,14 +52,14 @@ public class Libro {
 	 * @param isbn
 	 * @param ejemplar
 	 */
-	public Libro(int id, String genero, String titulo, String fecha, int isbn, List<Ejemplar> ejemplar) {
+	public Libro(int id, String genero, String titulo, String fecha, int isbn, List<Editorial> editorial) {
 		super();
 		this.id = id;
 		this.genero = genero;
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.isbn = isbn;
-		this.ejemplar = ejemplar;
+		this.editorial = editorial;
 	}
 
 	// Getters y Setters
@@ -101,8 +101,8 @@ public class Libro {
 	/**
 	 * @param ejemplar the ejemplar to set
 	 */
-	public void setEjemplar(List<Ejemplar> ejemplar) {
-		this.ejemplar = ejemplar;
+	public void setEditorial(List<Editorial> editorial) {
+		this.editorial = editorial;
 	}
 
 	/**
@@ -144,16 +144,16 @@ public class Libro {
 	 * @return the ejemplar
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ejemplar")
-	public List<Ejemplar> getEjemplar() {
-		return ejemplar;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Editorial")
+	public List<Editorial> getEditorial() {
+		return editorial;
 	}
 
 	// Método ToString
 	@Override
 	public String toString() {
 		return "Autor [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha=" + fecha + ", isbn=" + isbn
-				+ ", ejemplar=" + ejemplar + "]";
+				+ ", ejemplar=" + editorial + "]";
 	}
 
 }

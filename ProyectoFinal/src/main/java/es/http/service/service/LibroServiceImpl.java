@@ -1,11 +1,13 @@
 package es.http.service.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import es.http.service.dao.ILibroDAO;
 import es.http.service.dto.Libro;
 
 //Implementamos los métodos del service.
+@Service
 public class LibroServiceImpl implements ILibroService {
 
 	@Autowired

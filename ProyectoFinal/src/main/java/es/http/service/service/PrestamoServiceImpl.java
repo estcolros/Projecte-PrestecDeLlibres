@@ -2,10 +2,13 @@ package es.http.service.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import es.http.service.dao.IPrestamoDAO;
 import es.http.service.dto.Prestamo;
 
 //Implementamos los métodos del service.
+@Service
 public class PrestamoServiceImpl implements IPrestamoService {
 
 	IPrestamoDAO iPrestamoDAO;

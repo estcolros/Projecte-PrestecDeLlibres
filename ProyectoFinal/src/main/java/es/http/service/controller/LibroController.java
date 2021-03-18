@@ -59,7 +59,7 @@ public class LibroController {
 		Libro_seleccionado.setGenero(libro.getGenero());
 		Libro_seleccionado.setFecha(libro.getFecha());
 		Libro_seleccionado.setIsbn(libro.getIsbn());
-		Libro_seleccionado.setEjemplar(libro.getEjemplar());
+		Libro_seleccionado.setEditorial(libro.getEditorial());
 
 		Libro_actualizado = libroServiceImpl.actualizarLibro(Libro_seleccionado);
 

@@ -2,10 +2,13 @@ package es.http.service.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import es.http.service.dao.INotificacionDAO;
 import es.http.service.dto.Notificacion;
 
 //Implementamos los métodos del service.
+@Service
 public class NotificacionServiceImpl implements INotificacionService {
 
 	INotificacionDAO iNotificacionDAO;

@@ -3,11 +3,13 @@ package es.http.service.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import es.http.service.dto.Ejemplar;
 import es.http.service.dao.IEjemplarDAO;
 
 //Implementamos los métodos del service.
+@Service
 public class EjemplarServiceImpl implements IEjemplarService {
 	@Autowired
 	IEjemplarDAO IEjemplarDAO;

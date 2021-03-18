@@ -27,7 +27,7 @@ public class AutorController {
 		return AutorServiceImpl.listarAutor();
 	}
 
-	@PostMapping("autores")
+	@PostMapping("/autores")
 
 	public Autor salvarAutor(@RequestBody Autor Autor) {
 

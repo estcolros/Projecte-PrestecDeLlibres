@@ -27,13 +27,13 @@ public class Ejemplar {
 	@Column(name = "estado")
 	private int estado;
 
-	@ManyToOne
+	@ManyToOne(targetEntity=es.http.service.dto.Libro.class)
 	@JoinColumn(name = "cod_libro")
 	private int cod_libro;
 	@OneToMany
 	@JoinColumn(name = "cod_prestamo") // no sería con voto??
 	private List<Prestamo> cod_prestamo;
-	@ManyToOne
+	@ManyToOne(targetEntity=es.http.service.dto.SedeEmpresa.class)
 	@JoinColumn(name = "cod_sede")
 	private int cod_sede;
 

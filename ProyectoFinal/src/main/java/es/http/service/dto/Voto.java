@@ -30,11 +30,11 @@ public class Voto {
 	// PREGUNTAR DEBILES A JOSE!!!!!
 
 	@OneToMany
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cod_prestamo")
 	private List<Prestamo> Prestamo;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cod_ejemplar")
 	Ejemplar codigoEjemplar;
 
 	// Constructores
