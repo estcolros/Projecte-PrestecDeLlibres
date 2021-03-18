@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.http.service.dto.Prestamo;
 import es.http.service.service.PrestamoServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value="/api", method= { RequestMethod.POST, RequestMethod.PUT})
 public class PrestamoController {
 	@Autowired
 	PrestamoServiceImpl PrestamoServiceImpl;
@@ -57,6 +58,7 @@ public class PrestamoController {
 		Prestamo_seleccionado.setFechadevolucion(Prestamo.getFechadevolucion());
 		Prestamo_seleccionado.setNotificacion(Prestamo.getNotificacion());
 		Prestamo_seleccionado.setId(Prestamo.getId());
+		Prestamo_seleccionado.setVoto(Prestamo.getVoto());
 
 		Prestamo_actualizado = PrestamoServiceImpl.actualizarPrestamo(Prestamo_seleccionado);
 

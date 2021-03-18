@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.http.service.dto.Ejemplar;
 import es.http.service.service.EjemplarServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value="/api", method= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class EjemplarController {
 
 	@Autowired
@@ -27,7 +28,7 @@ public class EjemplarController {
 		return EjemplarServiceImpl.listarEjemplar();
 	}
 
-	@PostMapping("/ejemplares")
+	@PostMapping("/ejemplar")
 	public Ejemplar salvarEjemplar(@RequestBody Ejemplar Ejemplar) {
 
 		return EjemplarServiceImpl.guardarEjemplar(Ejemplar);
@@ -40,30 +41,30 @@ public class EjemplarController {
 
 		Ejemplar_xid = EjemplarServiceImpl.EjemplarXID(id);
 
-		System.out.println("Ejemplar XID: " + Ejemplar_xid);
+//		System.out.println("Ejemplar XID: " + Ejemplar_xid);
 
 		return Ejemplar_xid;
 	}
 
-	@PutMapping("/ejemplar/{id}")
-	public Ejemplar actualizarEjemplar(@PathVariable(name = "id") int id, @RequestBody Ejemplar Ejemplar) {
+	@PutMapping("/ejemplarp/{id}")
+	public Ejemplar actualizarEjemplar(@PathVariable(name = "id") int id, @RequestBody Ejemplar ejemplar) {
 
 		Ejemplar Ejemplar_seleccionado = new Ejemplar();
 		Ejemplar Ejemplar_actualizado = new Ejemplar();
 
 		Ejemplar_seleccionado = EjemplarServiceImpl.EjemplarXID(id);
-		Ejemplar_seleccionado.setEstado(Ejemplar.getEstado());
-		Ejemplar_seleccionado.setCod_libro(Ejemplar.getCod_libro());
-		Ejemplar_seleccionado.setCod_prestamo(Ejemplar.getCod_prestamo());
-		Ejemplar_seleccionado.setCod_sede(Ejemplar.getCod_sede());
+		Ejemplar_seleccionado.setEstado(ejemplar.getEstado());
+		Ejemplar_seleccionado.setCod_libro(ejemplar.getCod_libro());
+//		Ejemplar_seleccionado.setCod_prestamo(ejemplar.getCod_prestamo());
+		Ejemplar_seleccionado.setCod_sede(ejemplar.getCod_sede());
 		Ejemplar_actualizado = EjemplarServiceImpl.actualizarEjemplar(Ejemplar_seleccionado);
 
-		System.out.println("El Ejemplar actualizado es: " + Ejemplar_actualizado);
+//		System.out.println("El Ejemplar actualizado es: " + Ejemplar_actualizado);
 
 		return Ejemplar_actualizado;
 	}
 
-	@DeleteMapping("/ejemplar/{id}")
+	@DeleteMapping("/ejemplard/{id}")
 	public void eleiminarEjemplar(@PathVariable(name = "id") int id) {
 		EjemplarServiceImpl.eliminarEjemplar(id);
 	}

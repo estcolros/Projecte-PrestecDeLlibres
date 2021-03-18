@@ -16,12 +16,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //Nos centramos en la tabla SedeEmpresa
 @Entity
-@Table(name = "SedeEmpresa")
+@Table(name = "sedeempresa")
 public class SedeEmpresa {
 
 	// Atributos de SedeEmpresa
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name="cod_sede")
 	private int id;
 
 	@Column(name = "nombre") // no hace falta si se llama igual
@@ -31,7 +32,7 @@ public class SedeEmpresa {
 	private String localidad;
 
 	@OneToMany
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cod_ejemplar")
 	private List<Ejemplar> Ejemplar;
 
 	// Constructores
@@ -39,7 +40,7 @@ public class SedeEmpresa {
 		super();
 	}
 
-	public SedeEmpresa(int id, String nombre, String localidad, List<es.http.service.dto.Ejemplar> ejemplar) {
+	public SedeEmpresa(int id, String nombre, String localidad, List<Ejemplar> ejemplar) {
 		super();
 		this.id = id;
 		this.nombre = nombre;

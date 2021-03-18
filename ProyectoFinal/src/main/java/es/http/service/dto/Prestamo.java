@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,6 +34,9 @@ public class Prestamo {
 	@JoinColumn(name = "cod_notificacion")
 	private List<Notificacion> notificacion;
 
+	@ManyToOne(targetEntity=es.http.service.dto.Voto.class)
+	@JoinColumn(name="cod_voto")
+	private Voto Voto;
 	// Constructores
 	/**
 	 * 
@@ -50,13 +54,14 @@ public class Prestamo {
 	 * @param notificacion
 	 */
 	public Prestamo(int id, String fechacaducidad, String fechaalta, String fechadevolucion,
-			List<Notificacion> notificacion) {
+			List<Notificacion> notificacion, Voto Voto) {
 		super();
 		this.id = id;
 		this.fechacaducidad = fechacaducidad;
 		this.fechaalta = fechaalta;
 		this.fechadevolucion = fechadevolucion;
 		this.notificacion = notificacion;
+		this.Voto=Voto;
 	}
 
 	// Getters y Setters
@@ -132,11 +137,19 @@ public class Prestamo {
 		this.notificacion = notificacion;
 	}
 
+	public Voto getVoto() {
+		return Voto;
+	}
+
+	public void setVoto(Voto voto) {
+		Voto = voto;
+	}
+
 	// Método ToString
 	@Override
 	public String toString() {
 		return "Prestamo [id=" + id + ", fechacaducidad=" + fechacaducidad + ", fechaalta=" + fechaalta
-				+ ", fechadevolucion=" + fechadevolucion + ", notificacion=" + notificacion + "]";
+				+ ", fechadevolucion=" + fechadevolucion + "]";
 	}
 
 }

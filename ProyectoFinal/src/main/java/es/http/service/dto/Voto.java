@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 //Nos centramos en la tabla Voto
 @Entity
 @Table(name = "Voto")
@@ -20,6 +22,7 @@ public class Voto {
 	// Atributos de Voto
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name="cod_voto")
 	private int id;
 
 	@Column(name = "opinion") // no hace falta si se llama igual
@@ -27,7 +30,7 @@ public class Voto {
 	@Column(name = "calificacion") // no hace falta si se llama igual
 	private int calificacion;
 
-	// PREGUNTAR DEBILES A JOSE!!!!!
+	
 
 	@OneToMany
 	@JoinColumn(name = "cod_prestamo")
@@ -35,8 +38,9 @@ public class Voto {
 
 	@ManyToOne
 	@JoinColumn(name = "cod_ejemplar")
-	Ejemplar codigoEjemplar;
+	private Ejemplar codigoEjemplar;
 
+	
 	// Constructores
 	/**
 	 * 
@@ -61,6 +65,7 @@ public class Voto {
 		this.calificacion = calificacion;
 		Prestamo = prestamo;
 		this.codigoEjemplar = codigoEjemplar;
+		
 	}
 
 	// Getters y Setters
@@ -109,6 +114,8 @@ public class Voto {
 	/**
 	 * @return the prestamo
 	 */
+	@JsonIgnore
+	@OneToMany
 	public List<Prestamo> getPrestamo() {
 		return Prestamo;
 	}
@@ -134,11 +141,12 @@ public class Voto {
 		this.codigoEjemplar = codigoEjemplar;
 	}
 
+
+
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion + ", Prestamo=" + Prestamo
-				+ ", codigoEjemplar=" + codigoEjemplar + "]";
+		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion + "]";
 	}
 
 }

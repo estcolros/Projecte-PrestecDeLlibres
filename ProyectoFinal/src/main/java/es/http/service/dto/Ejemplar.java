@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //Nos centramos en la tabla Ejemplar
 @Entity
-@Table(name = "Ejemplar")
+@Table(name = "ejemplar")
 
 public class Ejemplar {
 
@@ -29,27 +29,31 @@ public class Ejemplar {
 
 	@ManyToOne(targetEntity=es.http.service.dto.Libro.class)
 	@JoinColumn(name = "cod_libro")
-	private int cod_libro;
-	@OneToMany
-	@JoinColumn(name = "cod_prestamo") // no sería con voto??
-	private List<Prestamo> cod_prestamo;
+	private Libro cod_libro;
+//	@OneToMany
+//	@JoinColumn(name = "cod_prestamo") // no sería con voto??
+//	private List<Prestamo> cod_prestamo;
 	@ManyToOne(targetEntity=es.http.service.dto.SedeEmpresa.class)
 	@JoinColumn(name = "cod_sede")
-	private int cod_sede;
+	private SedeEmpresa cod_sede;
 
 	// Constructores
 
 	public Ejemplar() {
 	}
 
-	public Ejemplar(int id, int estado, int cod_libro, List<Prestamo> cod_prestamo, int cod_sede) {
+
+
+	public Ejemplar(int id, int estado, Libro cod_libro, SedeEmpresa cod_sede) {
 		super();
 		this.id = id;
 		this.estado = estado;
 		this.cod_libro = cod_libro;
-		this.cod_prestamo = cod_prestamo;
+//		this.cod_prestamo = cod_prestamo;
 		this.cod_sede = cod_sede;
 	}
+
+
 
 	// Getters y Setters
 
@@ -69,37 +73,36 @@ public class Ejemplar {
 		this.estado = estado;
 	}
 
-	public int getCod_libro() {
+	public Libro getCod_libro() {
 		return cod_libro;
 	}
 
-	public void setCod_libro(int cod_libro) {
+	public void setCod_libro(Libro cod_libro) {
 		this.cod_libro = cod_libro;
 	}
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
-	public List<Prestamo> getCod_prestamo() {
-		return cod_prestamo;
-	}
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
+//	public List<Prestamo> getCod_prestamo() {
+//		return cod_prestamo;
+//	}
+//
+//	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
+//		this.cod_prestamo = cod_prestamo;
+//	}
 
-	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
-		this.cod_prestamo = cod_prestamo;
-	}
-
-	public int getCod_sede() {
+	public SedeEmpresa getCod_sede() {
 		return cod_sede;
 	}
 
-	public void setCod_sede(int cod_sede) {
+	public void setCod_sede(SedeEmpresa cod_sede) {
 		this.cod_sede = cod_sede;
 	}
 
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Ejemplar [id=" + id + ", estado=" + estado + ", cod_libro=" + cod_libro + ", cod_prestamo="
-				+ cod_prestamo + ", cod_sede=" + cod_sede + "]";
+		return "Ejemplar [id=" + id + ", estado=" + estado  +  "]";
 	}
 
 }

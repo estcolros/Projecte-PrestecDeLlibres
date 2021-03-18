@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,134 +27,149 @@ public class Libro {
 	private String genero;
 	@Column(name = "titulo")
 	private String titulo;
+	@Column (name="director")
+	private String director;
 	@Column(name = "fecha")
 	private String fecha;
 	@Column(name = "isbn")
 	private int isbn;
 
-	@OneToMany
+	@ManyToOne(targetEntity=es.http.service.dto.Editorial.class)
 	@JoinColumn(name = "cod_editorial")
-	private List<Editorial> editorial;
+	private Editorial editorial;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Autor.class)
+	@JoinColumn(name="cod_autor")
+	private Autor autor;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Idioma.class)
+	@JoinColumn(name="cod_idioma")
+	private Idioma idioma;
 
+	
 	// Constructores
 	/**
 	 * 
 	 */
-	public Libro() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+public Libro() {
 	}
 
-	/**
-	 * @param id
-	 * @param genero
-	 * @param titulo
-	 * @param fecha
-	 * @param isbn
-	 * @param ejemplar
-	 */
-	public Libro(int id, String genero, String titulo, String fecha, int isbn, List<Editorial> editorial) {
+
+	public Libro(int id, String genero, String titulo, String director, String fecha, int isbn, Editorial editorial,
+			Autor autor, Idioma idioma) {
 		super();
 		this.id = id;
 		this.genero = genero;
 		this.titulo = titulo;
+		this.director = director;
 		this.fecha = fecha;
 		this.isbn = isbn;
 		this.editorial = editorial;
+		this.autor = autor;
+		this.idioma = idioma;
 	}
 
-	// Getters y Setters
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	/**
-	 * @param genero the genero to set
-	 */
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	/**
-	 * @param titulo the titulo to set
-	 */
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	/**
-	 * @param fecha the fecha to set
-	 */
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
-	/**
-	 * @param isbn the isbn to set
-	 */
-	public void setIsbn(int isbn) {
-		this.isbn = isbn;
-	}
-
-	/**
-	 * @param ejemplar the ejemplar to set
-	 */
-	public void setEditorial(List<Editorial> editorial) {
-		this.editorial = editorial;
-	}
-
-	/**
-	 * @return the id
-	 */
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @return the genero
-	 */
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	public String getGenero() {
 		return genero;
 	}
 
-	/**
-	 * @return the titulo
-	 */
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+
 	public String getTitulo() {
 		return titulo;
 	}
 
-	/**
-	 * @return the fecha
-	 */
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public String getDirector() {
+		return director;
+	}
+
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+
 	public String getFecha() {
 		return fecha;
 	}
 
-	/**
-	 * @return the isbn
-	 */
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
 	public int getIsbn() {
 		return isbn;
 	}
 
-	/**
-	 * @return the ejemplar
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Editorial")
-	public List<Editorial> getEditorial() {
+
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
+	}
+
+
+	public Editorial getEditorial() {
 		return editorial;
 	}
 
-	// Método ToString
-	@Override
-	public String toString() {
-		return "Autor [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha=" + fecha + ", isbn=" + isbn
-				+ ", ejemplar=" + editorial + "]";
+
+	public void setEditorial(Editorial editorial) {
+		this.editorial = editorial;
 	}
 
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+
+	public Idioma getIdioma() {
+		return idioma;
+	}
+
+
+	public void setIdioma(Idioma idioma) {
+		this.idioma = idioma;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", director=" + director + ", fecha="
+				+ fecha + ", isbn=" + isbn + ", editorial=" + editorial + ", autor=" + autor + ", idioma=" + idioma
+				+ "]";
+	}
+	
+
+	
+	
+	
 }

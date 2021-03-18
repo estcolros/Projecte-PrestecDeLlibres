@@ -22,6 +22,7 @@ public class Trabajador {
 	// Atributos de Trabajador
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="cod_trabajador")
 	private int id;
 
 	@Column(name = "nombre") // no hace falta si se llama igual
@@ -42,7 +43,7 @@ public class Trabajador {
 	private String password;
 
 	@OneToMany
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "cod_notificacion")
 	private List<Notificacion> Notificacion;
 
 	// Constructores

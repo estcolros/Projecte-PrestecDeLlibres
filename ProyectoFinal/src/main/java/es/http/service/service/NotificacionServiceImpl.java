@@ -2,6 +2,7 @@ package es.http.service.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.http.service.dao.INotificacionDAO;
@@ -10,12 +11,13 @@ import es.http.service.dto.Notificacion;
 //Implementamos los métodos del service.
 @Service
 public class NotificacionServiceImpl implements INotificacionService {
-
+	
+	@Autowired
 	INotificacionDAO iNotificacionDAO;
 
 	@Override
 	public List<Notificacion> listarNotificacion() {
-		// TODO Auto-generated method stub
+		
 		return iNotificacionDAO.findAll();
 	}
 

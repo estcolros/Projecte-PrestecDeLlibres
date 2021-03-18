@@ -2,6 +2,7 @@ package es.http.service.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.http.service.dao.IPrestamoDAO;
@@ -11,6 +12,7 @@ import es.http.service.dto.Prestamo;
 @Service
 public class PrestamoServiceImpl implements IPrestamoService {
 
+	@Autowired
 	IPrestamoDAO iPrestamoDAO;
 
 	@Override

@@ -56,7 +56,8 @@ public class NotificacionController {
 		Notificacion_seleccionado.setTrabajador(Notificacion.getTrabajador());
 		Notificacion_seleccionado.setLeido(Notificacion.getLeido());
 		Notificacion_seleccionado.setMensaje(Notificacion.getMensaje());
-		Notificacion_seleccionado.setId(Notificacion.getId());
+		Notificacion_seleccionado.setPrestamo(Notificacion.getPrestamo());
+//		Notificacion_seleccionado.setId(Notificacion.getId());
 
 		Notificacion_actualizado = NotificacionServiceImpl.actualizarNotificacion(Notificacion_seleccionado);
 

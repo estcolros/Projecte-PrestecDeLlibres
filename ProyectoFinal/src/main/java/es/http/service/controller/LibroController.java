@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.http.service.service.LibroServiceImpl;
@@ -17,14 +18,14 @@ import es.http.service.service.LibroServiceImpl;
 import es.http.service.dto.Libro;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value="/api", method= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 
 public class LibroController {
 
 	@Autowired
 	LibroServiceImpl libroServiceImpl;
 
-	@GetMapping("/libros")
+	@GetMapping("/libro")
 	public List<Libro> listarLibro() {
 		return libroServiceImpl.listarLibro();
 	}
@@ -57,9 +58,12 @@ public class LibroController {
 
 		Libro_seleccionado.setTitulo(libro.getTitulo());
 		Libro_seleccionado.setGenero(libro.getGenero());
+		Libro_seleccionado.setDirector(libro.getDirector());
 		Libro_seleccionado.setFecha(libro.getFecha());
 		Libro_seleccionado.setIsbn(libro.getIsbn());
 		Libro_seleccionado.setEditorial(libro.getEditorial());
+		Libro_seleccionado.setAutor(libro.getAutor());
+		Libro_seleccionado.setIdioma(libro.getIdioma());
 
 		Libro_actualizado = libroServiceImpl.actualizarLibro(Libro_seleccionado);
 
@@ -68,8 +72,8 @@ public class LibroController {
 		return Libro_actualizado;
 	}
 
-	@DeleteMapping("/libro/{id}")
-	public void eleiminarLibro(@PathVariable(name = "id") int id) {
+	@DeleteMapping("/librod/{id}")
+	public void eliminarLibro(@PathVariable(name = "id") int id) {
 		libroServiceImpl.eliminarLibro(id);
 	}
 }
