@@ -33,7 +33,7 @@ public class NotificacionController {
 		return NotificacionServiceImpl.guardarNotificacion(Notificacion);
 	}
 
-	@GetMapping("/notificaciones/{id}")
+	@GetMapping("/notificacion/{id}")
 	public Notificacion NotificacionXID(@PathVariable(name = "id") int id) {
 
 		Notificacion Notificacion_xid = new Notificacion();

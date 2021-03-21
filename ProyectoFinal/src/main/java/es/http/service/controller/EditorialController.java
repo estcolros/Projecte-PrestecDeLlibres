@@ -33,7 +33,7 @@ public class EditorialController {
 		return EditorialServiceImpl.guardarEditorial(Editorial);
 	}
 
-	@GetMapping("/editoriales/{id}")
+	@GetMapping("/editorial/{id}")
 	public Editorial EditorialXID(@PathVariable(name = "id") int id) {
 
 		Editorial Editorial_xid = new Editorial();

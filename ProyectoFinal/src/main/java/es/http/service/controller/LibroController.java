@@ -18,14 +18,14 @@ import es.http.service.service.LibroServiceImpl;
 import es.http.service.dto.Libro;
 
 @RestController
-@RequestMapping(value="/api", method= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
+@RequestMapping(value="/api")
 
 public class LibroController {
 
 	@Autowired
 	LibroServiceImpl libroServiceImpl;
 
-	@GetMapping("/libro")
+	@GetMapping("/libros")
 	public List<Libro> listarLibro() {
 		return libroServiceImpl.listarLibro();
 	}
@@ -36,7 +36,7 @@ public class LibroController {
 		return libroServiceImpl.guardarLibro(Libro);
 	}
 
-	@GetMapping("/libros/{id}")
+	@GetMapping("/libro/{id}")
 	public Libro LibroXID(@PathVariable(name = "id") int id) {
 
 		Libro Libro_xid = new Libro();
@@ -72,7 +72,7 @@ public class LibroController {
 		return Libro_actualizado;
 	}
 
-	@DeleteMapping("/librod/{id}")
+	@DeleteMapping("/libro/{id}")
 	public void eliminarLibro(@PathVariable(name = "id") int id) {
 		libroServiceImpl.eliminarLibro(id);
 	}

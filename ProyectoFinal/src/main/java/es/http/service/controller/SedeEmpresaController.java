@@ -22,7 +22,7 @@ public class SedeEmpresaController {
 	@Autowired
 	SedeEmpresaServiceImpl SedeEmpresaServiceImpl;
 
-	@GetMapping("/sedeEmpresa")
+	@GetMapping("/sedeEmpresas")
 	public List<SedeEmpresa> listarSedeEmpresa() {
 		return SedeEmpresaServiceImpl.listarSedeEmpresa();
 	}
@@ -33,7 +33,7 @@ public class SedeEmpresaController {
 		return SedeEmpresaServiceImpl.guardarSedeEmpresa(sedeEmpresa);
 	}
 
-	@GetMapping("/sedeEmpresas/{id}")
+	@GetMapping("/sedeEmpresa/{id}")
 	public SedeEmpresa SedeEmpresaXID(@PathVariable(name = "id") int id) {
 
 		SedeEmpresa SedeEmpresa_xid = new SedeEmpresa();

@@ -17,13 +17,13 @@ import es.http.service.dto.Voto;
 import es.http.service.service.VotoServiceImpl;
 
 @RestController
-@RequestMapping(value="/api", method={RequestMethod.POST, RequestMethod.GET}) 
+@RequestMapping(value="/api") 
 public class VotoController {
 
 	@Autowired
 	VotoServiceImpl VotoServiceImpl;
 
-	@GetMapping("/voto")
+	@GetMapping("/votos")
 	public List<Voto> listarVoto() {
 		return VotoServiceImpl.listarVoto();
 	}
@@ -34,7 +34,7 @@ public class VotoController {
 		return VotoServiceImpl.guardarVoto(voto);
 	}
 
-	@GetMapping("/votos/{id}")
+	@GetMapping("/voto/{id}")
 	public Voto VotoXID(@PathVariable(name = "id")@RequestBody int id) {
 
 		Voto Voto_xid = new Voto();

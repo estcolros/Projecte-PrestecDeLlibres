@@ -33,7 +33,7 @@ public class TrabajadorController {
 		return TrabajadorServiceImpl.guardarTrabajador(trabajador);
 	}
 
-	@GetMapping("/trabajadores/{id}")
+	@GetMapping("/trabajador/{id}")
 	public Trabajador TrabajadorXID(@PathVariable(name = "id") int id) {
 
 		Trabajador Trabajador_xid = new Trabajador();

@@ -33,7 +33,7 @@ public class IdiomaController {
 		return IdiomaServiceImpl.guardarIdioma(Idioma);
 	}
 
-	@GetMapping("/idiomas/{id}")
+	@GetMapping("/idioma/{id}")
 	public Idioma IdiomaXID(@PathVariable(name = "id") int id) {
 
 		Idioma Idioma_xid = new Idioma();
@@ -61,7 +61,7 @@ public class IdiomaController {
 		return Idioma_actualizado;
 	}
 
-	@DeleteMapping("/idiomas/{id}")
+	@DeleteMapping("/idioma/{id}")
 	public void eleiminarIdioma(@PathVariable(name = "id") int id) {
 		IdiomaServiceImpl.eliminarIdioma(id);
 	}

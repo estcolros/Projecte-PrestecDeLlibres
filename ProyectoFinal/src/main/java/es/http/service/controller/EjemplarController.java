@@ -17,7 +17,7 @@ import es.http.service.dto.Ejemplar;
 import es.http.service.service.EjemplarServiceImpl;
 
 @RestController
-@RequestMapping(value="/api", method= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
+@RequestMapping(value="/api")
 public class EjemplarController {
 
 	@Autowired
@@ -28,13 +28,13 @@ public class EjemplarController {
 		return EjemplarServiceImpl.listarEjemplar();
 	}
 
-	@PostMapping("/ejemplar")
+	@PostMapping("/ejemplares")
 	public Ejemplar salvarEjemplar(@RequestBody Ejemplar Ejemplar) {
 
 		return EjemplarServiceImpl.guardarEjemplar(Ejemplar);
 	}
 
-	@GetMapping("/ejemplares/{id}")
+	@GetMapping("/ejemplar/{id}")
 	public Ejemplar EjemplarXID(@PathVariable(name = "id") int id) {
 
 		Ejemplar Ejemplar_xid = new Ejemplar();
@@ -46,7 +46,7 @@ public class EjemplarController {
 		return Ejemplar_xid;
 	}
 
-	@PutMapping("/ejemplarp/{id}")
+	@PutMapping("/ejemplar/{id}")
 	public Ejemplar actualizarEjemplar(@PathVariable(name = "id") int id, @RequestBody Ejemplar ejemplar) {
 
 		Ejemplar Ejemplar_seleccionado = new Ejemplar();
@@ -64,7 +64,7 @@ public class EjemplarController {
 		return Ejemplar_actualizado;
 	}
 
-	@DeleteMapping("/ejemplard/{id}")
+	@DeleteMapping("/ejemplar/{id}")
 	public void eleiminarEjemplar(@PathVariable(name = "id") int id) {
 		EjemplarServiceImpl.eliminarEjemplar(id);
 	}

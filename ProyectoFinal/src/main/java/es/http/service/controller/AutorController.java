@@ -34,7 +34,7 @@ public class AutorController {
 		return AutorServiceImpl.guardarAutor(Autor);
 	}
 
-	@GetMapping("/autores/{id}")
+	@GetMapping("/autor/{id}")
 	public Autor AutorXID(@PathVariable(name = "id") int id) {
 
 		Autor Autor_xid = new Autor();

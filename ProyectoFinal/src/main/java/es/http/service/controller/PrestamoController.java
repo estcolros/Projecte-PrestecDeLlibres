@@ -17,7 +17,7 @@ import es.http.service.dto.Prestamo;
 import es.http.service.service.PrestamoServiceImpl;
 
 @RestController
-@RequestMapping(value="/api", method= { RequestMethod.POST, RequestMethod.PUT})
+@RequestMapping(value="/api")
 public class PrestamoController {
 	@Autowired
 	PrestamoServiceImpl PrestamoServiceImpl;
@@ -33,7 +33,7 @@ public class PrestamoController {
 		return PrestamoServiceImpl.guardarPrestamo(Prestamo);
 	}
 
-	@GetMapping("/prestamos/{id}")
+	@GetMapping("/prestamo/{id}")
 	public Prestamo PrestamoXID(@PathVariable(name = "id") int id) {
 
 		Prestamo Prestamo_xid = new Prestamo();
