@@ -56,8 +56,9 @@ public class VotoController {
 		Voto_seleccionado.setOpinion(voto.getOpinion());
 		Voto_seleccionado.setCalificacion(voto.getCalificacion());
 		Voto_seleccionado.setId(voto.getId());
-		Voto_seleccionado.setCodigoEjemplar(voto.getCodigoEjemplar());
+//		Voto_seleccionado.setCodigoEjemplar(voto.getCodigoEjemplar());
 		Voto_seleccionado.setPrestamo(voto.getPrestamo());
+		Voto_seleccionado.setSedeEmpresa(voto.getSedeEmpresa());
 	
 
 		Voto_actualizado = VotoServiceImpl.actualizarVoto(Voto_seleccionado);

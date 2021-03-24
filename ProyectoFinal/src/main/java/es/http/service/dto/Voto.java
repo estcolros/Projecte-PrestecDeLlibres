@@ -32,16 +32,18 @@ public class Voto {
 	@Column(name = "calificacion") // no hace falta si se llama igual
 	private int calificacion;
 
-	
+	@OneToMany
+	@JoinColumn(name="cod_sede")
+	private List<SedeEmpresa> sedeEmpresa;
 
 	@OneToMany
 	@JoinColumn(name="cod_prestamo")
 	private List<Prestamo> prestamo;
 
-	@ManyToOne
-	@JoinColumn(name = "cod_ejemplar")
-	private Ejemplar codigoEjemplar;
-	
+//	@ManyToOne
+//	@JoinColumn(name = "cod_ejemplar")
+//	private Ejemplar codigoEjemplar;
+//	
 	
 	// Constructores
 	
@@ -64,14 +66,15 @@ public class Voto {
 		return id;
 	}
 
-	public Voto(int id, String opinion, int calificacion, List<Prestamo> prestamo,
-			Ejemplar codigoEjemplar) {
-		super();
+	public Voto(int id, String opinion, int calificacion, List<Prestamo> prestamo,List<SedeEmpresa> sedeEmpresa
+			) {
+		
 		this.id = id;
 		this.opinion = opinion;
 		this.calificacion = calificacion;
 		this.prestamo = prestamo;
-		this.codigoEjemplar = codigoEjemplar;
+//		this.codigoEjemplar = codigoEjemplar;
+		this.sedeEmpresa =sedeEmpresa;
 		
 	}
 
@@ -129,26 +132,35 @@ public class Voto {
 	/**
 	 * @return the codigoEjemplar
 	 */
-	public Ejemplar getCodigoEjemplar() {
-		return codigoEjemplar;
+//	public Ejemplar getCodigoEjemplar() {
+//		return codigoEjemplar;
+//	}
+//
+//	/**
+//	 * @param codigoEjemplar the codigoEjemplar to set
+//	 */
+//	public void setCodigoEjemplar(Ejemplar codigoEjemplar) {
+//		this.codigoEjemplar = codigoEjemplar;
+//	}
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cod_sede")
+public List<SedeEmpresa> getSedeEmpresa() {
+		return sedeEmpresa;
 	}
 
-	/**
-	 * @param codigoEjemplar the codigoEjemplar to set
-	 */
-	public void setCodigoEjemplar(Ejemplar codigoEjemplar) {
-		this.codigoEjemplar = codigoEjemplar;
+	public void setSedeEmpresa(List<SedeEmpresa> sedeEmpresa) {
+		this.sedeEmpresa = sedeEmpresa;
 	}
-
-
 
 	
 
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion + "prestamo= "+ prestamo+ "]";
+		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion +"]";
 	}
+
+	
 
 	
 
