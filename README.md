@@ -2,7 +2,7 @@
 
 # Proyecto: Préstamo de libros 
 
-#### Equipo Desarrollo 
+### Equipo Desarrollo 
 
 | Developer | Rama | Rol | Fecha Incorporación | Proyecto | Versión |
 | --- | :---:  | :---:  | :---:  | :---: | :---:  |
@@ -12,7 +12,8 @@
 
 #### Lista con los pasos mínimos que se necesitan para clonar exitosamente el proyecto y echarlo a andar en local.
 
-###### Install stack technology
+##### Install stack technology
+
 ```
 Eclipse Enterprise Java Developers          https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-enterprise-java-developers
 Spring Tool Suite 4                         https://spring.io/tools
@@ -20,6 +21,7 @@ MySQL Workbench                             https://dev.mysql.com/downloads/work
 MySQL Community Server                      https://dev.mysql.com/downloads/mysql/
 Postman                                     https://www.postman.com/
 ```
+
 #### Descripción del proyecto 
 
 ```
@@ -48,7 +50,7 @@ para recibir avisos cuando otro usuario esté interesado en uno de sus libros, a
 votación/puntuación/opinión sobre los libros.
 ```
 
-#### Diseño base de datos 
+### Diseño base de datos 
 
 #### Módelo ERR
 ![ERR PLlibres](https://user-images.githubusercontent.com/78431881/112317681-952dc380-8cac-11eb-9351-f1b196439dd8.png)
@@ -65,7 +67,7 @@ votación/puntuación/opinión sobre los libros.
 - **Notificacion (cod_notificacion, cod_préstamo, cod_trabajador,** mensaje, leído)
 - **Trabajador (cod_trabajador, cod_ejemplar, cod_notificacion, cod_prestamo,** nombre, apellido1, apellido2, correo, DNI, user,   password)
 
-#### Backend
+### Backend
 
 #### Información de Desarrollo
 
@@ -157,4 +159,16 @@ PUT:/api/voto/{id}
 POST:/api/votos
 DELETE:/api/voto/{id}
 ```
+
+### Frontend
+
+#### Información de Desarrollo
+
+```
+IDE               Visual Studio Code, Versión: 1.54.3
+Core              HTML, CSS, JavaScript,jQuery,TypeScript, Boostrap, Angular
+Framework         Angular
+DataBase          MySQL Workbench and MySQL Community Server, Version 8.0.22 
+```
+
 
