@@ -86,8 +86,7 @@ public class SedeEmpresa {
 	// Método ToString
 	@Override
 	public String toString() {
-		return "SedeEmpresa [id=" + id + ", nombre=" + nombre + ", localidad=" + localidad + ", Ejemplar=" + Ejemplar
-				+ "]";
+		return "SedeEmpresa [id=" + id + ", nombre=" + nombre + ", localidad=" + localidad + "]";
 	}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,10 +42,13 @@ public class Trabajador {
 	private String user;
 	@Column(name = "password") // no hace falta si se llama igual
 	private String password;
-
+	
+	
 	@OneToMany
 	@JoinColumn(name = "cod_notificacion")
 	private List<Notificacion> Notificacion;
+	
+	
 
 	// Constructores
 	public Trabajador() {
@@ -52,7 +56,7 @@ public class Trabajador {
 
 	public Trabajador(int id, String nombre, String apellido1, String apellido2, String telefono, String correo,
 			String dni, String user, String password, List<es.http.service.dto.Notificacion> notificacion) {
-		super();
+	
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -62,7 +66,8 @@ public class Trabajador {
 		this.dni = dni;
 		this.user = user;
 		this.password = password;
-		Notificacion = notificacion;
+		this.Notificacion = notificacion;
+		
 	}
 
 	// Getters y Setters
@@ -147,13 +152,25 @@ public class Trabajador {
 	public void setNotificacion(List<Notificacion> notificacion) {
 		Notificacion = notificacion;
 	}
+	
+
+//	public int getTrabajadorrecibe() {
+//		return trabajadorrecibe;
+//	}
+//
+//	public void setTrabajadorrecibe(Integer trabajadorrecibe) {
+//		this.trabajadorrecibe = trabajadorrecibe;
+//	}
 
 	// Método ToString
+	
 	@Override
 	public String toString() {
 		return "Trabajador [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
 				+ ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + ", user=" + user + ", password="
 				+ password + ", Notificacion=" + Notificacion + "]";
 	}
+
+	
 
 }

@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import es.http.service.dto.Voto;
 import es.http.service.service.VotoServiceImpl;
 
 @RestController
+@CrossOrigin(origins="*", methods= {RequestMethod.GET})
 @RequestMapping(value="/api") 
 public class VotoController {
 
@@ -40,9 +42,6 @@ public class VotoController {
 		Voto Voto_xid = new Voto();
 
 		Voto_xid = VotoServiceImpl.VotoXID(id);
-
-//		System.out.println("Voto XID: " + Voto_xid);
-
 		return Voto_xid;
 	}
 
@@ -59,7 +58,7 @@ public class VotoController {
 		Voto_seleccionado.setId(voto.getId());
 		Voto_seleccionado.setCodigoEjemplar(voto.getCodigoEjemplar());
 		Voto_seleccionado.setPrestamo(voto.getPrestamo());
-		
+	
 
 		Voto_actualizado = VotoServiceImpl.actualizarVoto(Voto_seleccionado);
 

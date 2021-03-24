@@ -35,6 +35,10 @@ public class Notificacion {
 	@JoinColumn(name= "cod_prestamo")
 	private Prestamo Prestamo;
 
+	@ManyToOne(targetEntity=es.http.service.dto.Trabajador.class)
+	@JoinColumn(name= "trabajador_recibe")
+	private Trabajador trabajadorrecibe;
+	
 	// Constructores
 	/**
 	 * 
@@ -43,13 +47,6 @@ public class Notificacion {
 		
 	}
 
-	/**
-	 * @param id
-	 * @param mensaje
-	 * @param leido
-	 * @param trabajador
-	 */
-	
 
 	// Getters y Setters
 	/**
@@ -59,15 +56,18 @@ public class Notificacion {
 		return id;
 	}
 
-	public Notificacion(int id, String mensaje, int leido, Trabajador trabajador,
-			Prestamo prestamo) {
+
+	public Notificacion(int id, String mensaje, int leido, Trabajador trabajador, es.http.service.dto.Prestamo prestamo,
+			Trabajador trabajadorrecibe) {
 		super();
 		this.id = id;
 		this.mensaje = mensaje;
 		this.leido = leido;
 		this.trabajador = trabajador;
 		Prestamo = prestamo;
+		this.trabajadorrecibe = trabajadorrecibe;
 	}
+
 
 	/**
 	 * @param id the id to set
@@ -126,13 +126,28 @@ public class Notificacion {
 
 	public void setPrestamo(Prestamo prestamo) {
 		Prestamo = prestamo;
+		
+	}
+	
+
+	public Trabajador getTrabajadorrecibe() {
+		return trabajadorrecibe;
 	}
 
-	// Método ToString
+
+	public void setTrabajadorrecibe(Trabajador trabajadorrecibe) {
+		this.trabajadorrecibe = trabajadorrecibe;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Notificacion [id=" + id + ", mensaje=" + mensaje + ", leido=" + leido + 
-				 "]";
+		return "Notificacion [id=" + id + ", mensaje=" + mensaje + ", leido=" + leido + ", trabajador=" + trabajador
+				+ ", trabajadorrecibe=" + trabajadorrecibe + "]";
 	}
+
+
+	// Método ToString
+	
 
 }

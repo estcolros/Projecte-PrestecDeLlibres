@@ -41,7 +41,7 @@ public class AutorController {
 
 		Autor_xid = AutorServiceImpl.AutorXID(id);
 
-		System.out.println("Autor XID: " + Autor_xid);
+			
 
 		return Autor_xid;
 	}
@@ -54,10 +54,10 @@ public class AutorController {
 		Autor_seleccionado = AutorServiceImpl.AutorXID(id);
 		Autor_seleccionado.setNombre(Autor.getNombre());
 		Autor_seleccionado.setApellido(Autor.getApellido());
-		Autor_seleccionado.setLibro(Autor.getLibro());
+		
 		Autor_actualizado = AutorServiceImpl.actualizarAutor(Autor_seleccionado);
 
-		System.out.println("El Autor actualizado es: " + Autor_actualizado);
+		
 
 		return Autor_actualizado;
 	}

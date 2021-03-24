@@ -40,7 +40,7 @@ public class IdiomaController {
 
 		Idioma_xid = IdiomaServiceImpl.IdiomaXID(id);
 
-//		System.out.println("Idioma XID: " + Idioma_xid);
+
 
 		return Idioma_xid;
 	}
@@ -53,10 +53,10 @@ public class IdiomaController {
 
 		Idioma_seleccionado = IdiomaServiceImpl.IdiomaXID(id);
 		Idioma_seleccionado.setNombre(Idioma.getNombre());
-		Idioma_seleccionado.setCod_libro(Idioma.getCod_libro());
+	
 		Idioma_actualizado = IdiomaServiceImpl.actualizarIdioma(Idioma_seleccionado);
 
-//		System.out.println("El Idioma actualizado es: " + Idioma_actualizado);
+
 
 		return Idioma_actualizado;
 	}

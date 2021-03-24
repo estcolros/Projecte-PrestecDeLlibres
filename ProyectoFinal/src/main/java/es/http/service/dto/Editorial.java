@@ -67,7 +67,7 @@ public class Editorial {
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Editorial [id=" + id + ", nombre=" + nombre + ", libro=" + libro + "]";
+		return "Editorial [id=" + id + ", nombre=" + nombre + "]";
 	}
 
 }

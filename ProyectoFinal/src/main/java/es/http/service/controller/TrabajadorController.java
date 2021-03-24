@@ -62,6 +62,7 @@ public class TrabajadorController {
 		Trabajador_seleccionado.setPassword(trabajador.getPassword());
 		Trabajador_seleccionado.setTelefono(trabajador.getTelefono());
 		Trabajador_seleccionado.setUser(trabajador.getUser());
+//		Trabajador_seleccionado.setTrabajadorrecibe(trabajador.getTrabajadorrecibe());
 
 		Trabajador_actualizado = TrabajadorServiceImpl.actualizarTrabajador(Trabajador_seleccionado);
 

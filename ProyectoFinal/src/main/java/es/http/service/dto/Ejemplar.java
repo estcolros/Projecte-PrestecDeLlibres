@@ -26,32 +26,35 @@ public class Ejemplar {
 	private int id;
 	@Column(name = "estado")
 	private int estado;
-
+	
+	
 	@ManyToOne(targetEntity=es.http.service.dto.Libro.class)
 	@JoinColumn(name = "cod_libro")
 	private Libro cod_libro;
-//	@OneToMany
-//	@JoinColumn(name = "cod_prestamo") // no sería con voto??
-//	private List<Prestamo> cod_prestamo;
+	@OneToMany
+	@JoinColumn(name = "cod_prestamo") 
+	private List<Prestamo> cod_prestamo;
 	@ManyToOne(targetEntity=es.http.service.dto.SedeEmpresa.class)
 	@JoinColumn(name = "cod_sede")
 	private SedeEmpresa cod_sede;
-
-	// Constructores
+	
+	
 
 	public Ejemplar() {
 	}
 
 
-
-	public Ejemplar(int id, int estado, Libro cod_libro, SedeEmpresa cod_sede) {
+	public Ejemplar(int id, int estado, Libro cod_libro, List<Prestamo> cod_prestamo, SedeEmpresa cod_sede ) {
 		super();
 		this.id = id;
 		this.estado = estado;
 		this.cod_libro = cod_libro;
-//		this.cod_prestamo = cod_prestamo;
+		this.cod_prestamo = cod_prestamo;
 		this.cod_sede = cod_sede;
+	
 	}
+
+
 
 
 
@@ -81,15 +84,15 @@ public class Ejemplar {
 		this.cod_libro = cod_libro;
 	}
 
-//	@JsonIgnore
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
-//	public List<Prestamo> getCod_prestamo() {
-//		return cod_prestamo;
-//	}
-//
-//	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
-//		this.cod_prestamo = cod_prestamo;
-//	}
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
+	public List<Prestamo> getCod_prestamo() {
+		return cod_prestamo;
+	}
+
+	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
+		this.cod_prestamo = cod_prestamo;
+	}
 
 	public SedeEmpresa getCod_sede() {
 		return cod_sede;
@@ -98,6 +101,15 @@ public class Ejemplar {
 	public void setCod_sede(SedeEmpresa cod_sede) {
 		this.cod_sede = cod_sede;
 	}
+
+	
+	
+
+
+
+
+
+
 
 	// Método ToString
 	@Override

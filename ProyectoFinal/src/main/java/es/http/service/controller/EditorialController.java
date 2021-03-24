@@ -40,7 +40,7 @@ public class EditorialController {
 
 		Editorial_xid = EditorialServiceImpl.EditorialXID(id);
 
-		System.out.println("Editorial XID: " + Editorial_xid);
+
 
 		return Editorial_xid;
 	}
@@ -53,10 +53,10 @@ public class EditorialController {
 
 		Editorial_seleccionado = EditorialServiceImpl.EditorialXID(id);
 		Editorial_seleccionado.setNombre(Editorial.getNombre());
-		Editorial_seleccionado.setLibro(Editorial.getLibro());
+		
 		Editorial_actualizado = EditorialServiceImpl.actualizarEditorial(Editorial_seleccionado);
 
-		System.out.println("El Editorial actualizado es: " + Editorial_actualizado);
+		
 
 		return Editorial_actualizado;
 	}

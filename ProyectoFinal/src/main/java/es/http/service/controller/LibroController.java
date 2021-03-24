@@ -58,13 +58,12 @@ public class LibroController {
 
 		Libro_seleccionado.setTitulo(libro.getTitulo());
 		Libro_seleccionado.setGenero(libro.getGenero());
-		Libro_seleccionado.setDirector(libro.getDirector());
 		Libro_seleccionado.setFecha(libro.getFecha());
 		Libro_seleccionado.setIsbn(libro.getIsbn());
 		Libro_seleccionado.setEditorial(libro.getEditorial());
 		Libro_seleccionado.setAutor(libro.getAutor());
 		Libro_seleccionado.setIdioma(libro.getIdioma());
-
+		
 		Libro_actualizado = libroServiceImpl.actualizarLibro(Libro_seleccionado);
 
 		// System.out.println("El Equipo actualizado es: "+ Equipo_actualizado);

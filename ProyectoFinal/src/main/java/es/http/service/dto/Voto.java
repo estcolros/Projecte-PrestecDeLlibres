@@ -4,19 +4,21 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //Nos centramos en la tabla Voto
 @Entity
-@Table(name = "Voto")
+@Table(name = "voto")
 public class Voto {
 
 	// Atributos de Voto
@@ -33,21 +35,18 @@ public class Voto {
 	
 
 	@OneToMany
-	@JoinColumn(name = "cod_prestamo")
-	private List<Prestamo> Prestamo;
+	@JoinColumn(name="cod_prestamo")
+	private List<Prestamo> prestamo;
 
 	@ManyToOne
 	@JoinColumn(name = "cod_ejemplar")
 	private Ejemplar codigoEjemplar;
-
+	
 	
 	// Constructores
-	/**
-	 * 
-	 */
+	
 	public Voto() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -57,23 +56,23 @@ public class Voto {
 	 * @param prestamo
 	 * @param codigoEjemplar
 	 */
-	public Voto(int id, String opinion, int calificacion, List<es.http.service.dto.Prestamo> prestamo,
+
+
+	// Getters y Setters
+	
+	public int getId() {
+		return id;
+	}
+
+	public Voto(int id, String opinion, int calificacion, List<Prestamo> prestamo,
 			Ejemplar codigoEjemplar) {
 		super();
 		this.id = id;
 		this.opinion = opinion;
 		this.calificacion = calificacion;
-		Prestamo = prestamo;
+		this.prestamo = prestamo;
 		this.codigoEjemplar = codigoEjemplar;
 		
-	}
-
-	// Getters y Setters
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
 	}
 
 	/**
@@ -115,16 +114,16 @@ public class Voto {
 	 * @return the prestamo
 	 */
 	@JsonIgnore
-	@OneToMany
-	public List<Prestamo> getPrestamo() {
-		return Prestamo;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "prestamo")
+	public List<Prestamo>  getPrestamo() {
+		return prestamo;
 	}
 
 	/**
 	 * @param prestamo the prestamo to set
 	 */
 	public void setPrestamo(List<Prestamo> prestamo) {
-		Prestamo = prestamo;
+		this.prestamo = prestamo;
 	}
 
 	/**
@@ -143,10 +142,16 @@ public class Voto {
 
 
 
+	
+
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion + "]";
+		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion + "prestamo= "+ prestamo+ "]";
 	}
+
+	
+
+	
 
 }

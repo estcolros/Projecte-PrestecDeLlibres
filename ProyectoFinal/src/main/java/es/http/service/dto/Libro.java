@@ -27,8 +27,6 @@ public class Libro {
 	private String genero;
 	@Column(name = "titulo")
 	private String titulo;
-	@Column (name="director")
-	private String director;
 	@Column(name = "fecha")
 	private String fecha;
 	@Column(name = "isbn")
@@ -56,13 +54,13 @@ public Libro() {
 	}
 
 
-	public Libro(int id, String genero, String titulo, String director, String fecha, int isbn, Editorial editorial,
+	public Libro(int id, String genero, String titulo, String fecha, int isbn, Editorial editorial,
 			Autor autor, Idioma idioma) {
 		super();
 		this.id = id;
 		this.genero = genero;
 		this.titulo = titulo;
-		this.director = director;
+		
 		this.fecha = fecha;
 		this.isbn = isbn;
 		this.editorial = editorial;
@@ -100,15 +98,6 @@ public Libro() {
 		this.titulo = titulo;
 	}
 
-
-	public String getDirector() {
-		return director;
-	}
-
-
-	public void setDirector(String director) {
-		this.director = director;
-	}
 
 
 	public String getFecha() {
@@ -163,8 +152,8 @@ public Libro() {
 
 	@Override
 	public String toString() {
-		return "Libro [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", director=" + director + ", fecha="
-				+ fecha + ", isbn=" + isbn + ", editorial=" + editorial + ", autor=" + autor + ", idioma=" + idioma
+		return "Libro [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha="
+				+ fecha + ", isbn=" + isbn + ", editorial=" + editorial + ", idioma=" + idioma
 				+ "]";
 	}
 	

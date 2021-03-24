@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,11 +24,11 @@ public class Prestamo {
 	@Id
 	@Column(name = "cod_prestamo")
 	private int id;
-	@Column(name = "FechaCaducidad")
+	@Column(name = "fecha_caducidad")
 	private String fechacaducidad;
-	@Column(name = "FechaAlta")
+	@Column(name = "fecha_alta")
 	private String fechaalta;
-	@Column(name = "FechaDevolucion")
+	@Column(name = "fecha_devolucion")
 	private String fechadevolucion;
 
 	@OneToMany
@@ -36,14 +37,24 @@ public class Prestamo {
 
 	@ManyToOne(targetEntity=es.http.service.dto.Voto.class)
 	@JoinColumn(name="cod_voto")
-	private Voto Voto;
+	private Voto voto;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Trabajador.class)
+	@JoinColumn(name="trabajador_recibe")
+	private Trabajador trabajadorrecibe;
+	@ManyToOne(targetEntity=es.http.service.dto.Trabajador.class)
+	@JoinColumn(name="trabajador_presta")
+	private Trabajador trabajadorpresta;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Ejemplar.class)
+	@JoinColumn(name="cod_ejemplar")
+	private Ejemplar ejemplar;
 	// Constructores
 	/**
 	 * 
 	 */
 	public Prestamo() {
-		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	/**
@@ -53,16 +64,7 @@ public class Prestamo {
 	 * @param fechadevolucion
 	 * @param notificacion
 	 */
-	public Prestamo(int id, String fechacaducidad, String fechaalta, String fechadevolucion,
-			List<Notificacion> notificacion, Voto Voto) {
-		super();
-		this.id = id;
-		this.fechacaducidad = fechacaducidad;
-		this.fechaalta = fechaalta;
-		this.fechadevolucion = fechadevolucion;
-		this.notificacion = notificacion;
-		this.Voto=Voto;
-	}
+
 
 	// Getters y Setters
 	/**
@@ -70,6 +72,23 @@ public class Prestamo {
 	 */
 	public int getId() {
 		return id;
+	}
+
+	
+
+	public Prestamo(int id, String fechacaducidad, String fechaalta, String fechadevolucion,
+			List<Notificacion> notificacion, Voto voto, Trabajador trabajadorrecibe, Trabajador trabajadorpresta,
+			Ejemplar ejemplar) {
+		super();
+		this.id = id;
+		this.fechacaducidad = fechacaducidad;
+		this.fechaalta = fechaalta;
+		this.fechadevolucion = fechadevolucion;
+		this.notificacion = notificacion;
+		this.voto = voto;
+		this.trabajadorrecibe = trabajadorrecibe;
+		this.trabajadorpresta = trabajadorpresta;
+		this.ejemplar = ejemplar;
 	}
 
 	/**
@@ -137,19 +156,53 @@ public class Prestamo {
 		this.notificacion = notificacion;
 	}
 
+	
+
 	public Voto getVoto() {
-		return Voto;
+		return voto;
 	}
 
 	public void setVoto(Voto voto) {
-		Voto = voto;
+		this.voto = voto;
 	}
 
-	// Método ToString
+
+	public Ejemplar getEjemplar() {
+		return ejemplar;
+	}
+
+	public void setEjemplar(Ejemplar ejemplar) {
+		this.ejemplar = ejemplar;
+	}
+	
+	
+
+	public Trabajador getTrabajadorrecibe() {
+		return trabajadorrecibe;
+	}
+
+	public void setTrabajadorrecibe(Trabajador trabajadorrecibe) {
+		this.trabajadorrecibe = trabajadorrecibe;
+	}
+
+	public Trabajador getTrabajadorpresta() {
+		return trabajadorpresta;
+	}
+
+	public void setTrabajadorpresta(Trabajador trabajadorpresta) {
+		this.trabajadorpresta = trabajadorpresta;
+	}
+
 	@Override
 	public String toString() {
 		return "Prestamo [id=" + id + ", fechacaducidad=" + fechacaducidad + ", fechaalta=" + fechaalta
-				+ ", fechadevolucion=" + fechadevolucion + "]";
+				+ ", fechadevolucion=" + fechadevolucion + ", notificacion=" + notificacion + ", voto=" + voto
+				+ ", trabajadorrecibe=" + trabajadorrecibe + ", trabajadorpresta=" + trabajadorpresta + ", ejemplar="
+				+ ejemplar + "]";
 	}
 
+	
+
+
+	
 }
