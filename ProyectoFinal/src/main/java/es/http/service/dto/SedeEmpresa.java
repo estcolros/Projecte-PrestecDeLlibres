@@ -21,7 +21,7 @@ public class SedeEmpresa {
 
 	// Atributos de SedeEmpresa
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
 	@Column (name="cod_sede")
 	private int id;
 

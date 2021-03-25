@@ -22,7 +22,7 @@ public class Trabajador {
 
 	// Atributos de Trabajador
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
 	@Column(name="cod_trabajador")
 	private int id;
 
