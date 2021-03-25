@@ -33,9 +33,6 @@ public class Ejemplar {
 	@ManyToOne(targetEntity=es.http.service.dto.Libro.class)
 	@JoinColumn(name = "cod_libro")
 	private Libro cod_libro;
-//	@OneToMany
-//	@JoinColumn(name = "cod_prestamo") 
-//	private List<Prestamo> cod_prestamo;
 	@ManyToOne(targetEntity=es.http.service.dto.SedeEmpresa.class)
 	@JoinColumn(name = "cod_sede")
 	private SedeEmpresa cod_sede;
@@ -45,25 +42,17 @@ public class Ejemplar {
 	private Trabajador trabajador_presta;
 	
 	
-//	
-//	@OneToMany
-//	@JoinColumn(name="cod_voto")
-//	private Set<Voto> voto;
-	
-	
+	//Constructores
 
 	public Ejemplar() {
 	}
 
 
 	public Ejemplar(int id, int estado, Libro cod_libro, SedeEmpresa cod_sede, Trabajador trabajador_presta) {
-		super();
 		this.id = id;
 		this.estado = estado;
 		this.cod_libro = cod_libro;
-//		this.cod_prestamo = cod_prestamo;
 		this.cod_sede = cod_sede;
-//		this.voto=voto;
 		this.trabajador_presta= trabajador_presta;
 	
 	}
@@ -98,15 +87,6 @@ public class Ejemplar {
 		this.cod_libro = cod_libro;
 	}
 
-//	@JsonIgnore
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
-//	public List<Prestamo> getCod_prestamo() {
-//		return cod_prestamo;
-//	}
-//
-//	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
-//		this.cod_prestamo = cod_prestamo;
-//	}
 
 	public SedeEmpresa getCod_sede() {
 		return cod_sede;
@@ -117,13 +97,7 @@ public class Ejemplar {
 	}
 
 	
-	
-
-
-
-
-
-public Trabajador getTrabajador_presta() {
+	public Trabajador getTrabajador_presta() {
 		return trabajador_presta;
 	}
 
@@ -132,17 +106,6 @@ public Trabajador getTrabajador_presta() {
 		this.trabajador_presta = trabajador_presta;
 	}
 
-
-////	//	@JsonIgnore
-//	@OneToMany
-//	public Set<Voto> getVoto() {
-//		return voto;
-//	}
-//
-//
-//	public void setVoto(Set<Voto> voto) {
-//		this.voto = voto;
-//	}
 
 
 	// Método ToString

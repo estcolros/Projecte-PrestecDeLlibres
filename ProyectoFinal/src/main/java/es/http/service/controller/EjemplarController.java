@@ -41,8 +41,6 @@ public class EjemplarController {
 
 		Ejemplar_xid = EjemplarServiceImpl.EjemplarXID(id);
 
-//		System.out.println("Ejemplar XID: " + Ejemplar_xid);
-
 		return Ejemplar_xid;
 	}
 
@@ -55,12 +53,9 @@ public class EjemplarController {
 		Ejemplar_seleccionado = EjemplarServiceImpl.EjemplarXID(id);
 		Ejemplar_seleccionado.setEstado(ejemplar.getEstado());
 		Ejemplar_seleccionado.setCod_libro(ejemplar.getCod_libro());
-//		Ejemplar_seleccionado.setCod_prestamo(ejemplar.getCod_prestamo());
 		Ejemplar_seleccionado.setCod_sede(ejemplar.getCod_sede());
-//		Ejemplar_seleccionado.setVoto(ejemplar.getVoto());
-		
-		Ejemplar_actualizado = EjemplarServiceImpl.actualizarEjemplar(Ejemplar_seleccionado);
 
+		Ejemplar_actualizado = EjemplarServiceImpl.actualizarEjemplar(Ejemplar_seleccionado);
 
 		return Ejemplar_actualizado;
 	}

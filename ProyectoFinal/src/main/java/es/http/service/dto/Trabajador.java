@@ -26,37 +26,32 @@ public class Trabajador {
 	@Column(name="cod_trabajador")
 	private int id;
 
-	@Column(name = "nombre") // no hace falta si se llama igual
+	@Column(name = "nombre") 
 	private String nombre;
-	@Column(name = "apellido1") // no hace falta si se llama igual
+	@Column(name = "apellido1") 
 	private String apellido1;
-	@Column(name = "apellido2") // no hace falta si se llama igual
+	@Column(name = "apellido2") 
 	private String apellido2;
-	@Column(name = "telefono") // no hace falta si se llama igual
+	@Column(name = "telefono") 
 	private String telefono;
-	@Column(name = "correo") // no hace falta si se llama igual
+	@Column(name = "correo") 
 	private String correo;
-	@Column(name = "DNI") // no hace falta si se llama igual
+	@Column(name = "DNI") 
 	private String dni;
-	@Column(name = "user") // no hace falta si se llama igual
+	@Column(name = "user") 
 	private String user;
-	@Column(name = "password") // no hace falta si se llama igual
+	@Column(name = "password") 
 	private String password;
 	
 	
-	@OneToMany
-	@JoinColumn(name = "cod_notificacion")
-	private List<Notificacion> Notificacion;
-	
+
 	
 
 	// Constructores
 	public Trabajador() {
 	}
 
-	public Trabajador(int id, String nombre, String apellido1, String apellido2, String telefono, String correo,
-			String dni, String user, String password, List<es.http.service.dto.Notificacion> notificacion) {
-	
+	public Trabajador(int id, String nombre, String apellido1, String apellido2, String telefono, String correo, String dni, String user, String password) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -66,7 +61,7 @@ public class Trabajador {
 		this.dni = dni;
 		this.user = user;
 		this.password = password;
-		this.Notificacion = notificacion;
+
 		
 	}
 
@@ -143,24 +138,6 @@ public class Trabajador {
 		this.password = password;
 	}
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Notificacion")
-	public List<Notificacion> getNotificacion() {
-		return Notificacion;
-	}
-
-	public void setNotificacion(List<Notificacion> notificacion) {
-		Notificacion = notificacion;
-	}
-	
-
-//	public int getTrabajadorrecibe() {
-//		return trabajadorrecibe;
-//	}
-//
-//	public void setTrabajadorrecibe(Integer trabajadorrecibe) {
-//		this.trabajadorrecibe = trabajadorrecibe;
-//	}
 
 	// Método ToString
 	
@@ -168,7 +145,7 @@ public class Trabajador {
 	public String toString() {
 		return "Trabajador [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
 				+ ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + ", user=" + user + ", password="
-				+ password + ", Notificacion=" + Notificacion + "]";
+				+ password + "]";
 	}
 
 	

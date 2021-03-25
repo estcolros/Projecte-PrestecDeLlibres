@@ -27,23 +27,16 @@ public class Voto {
 	@Column (name="cod_voto")
 	private int id;
 
-	@Column(name = "opinion") // no hace falta si se llama igual
+	@Column(name = "opinion") 
 	private String opinion;
-	@Column(name = "calificacion") // no hace falta si se llama igual
+	@Column(name = "calificacion") 
 	private int calificacion;
-//
-//	@OneToMany
-//	@JoinColumn(name="cod_sede")
-//	private List<SedeEmpresa> sedeEmpresa;
-//
-//	@OneToMany
-//	@JoinColumn(name="cod_prestamo")
-//	private List<Prestamo> prestamo;
+
 
 	@ManyToOne
 	@JoinColumn(name = "cod_ejemplar")
 	private Ejemplar codigoEjemplar;
-//	
+
 	
 	// Constructores
 	
@@ -53,13 +46,12 @@ public class Voto {
 		
 	}
 
-	/**
-	 * @param id
-	 * @param opinion
-	 * @param calificacion
-	 * @param prestamo
-	 * @param codigoEjemplar
-	 */
+	public Voto(int id, String opinion, int calificacion, Ejemplar codigoEjemplar) {
+		this.id = id;
+			this.opinion = opinion;
+			this.calificacion = calificacion;
+		
+		}
 
 
 	// Getters y Setters
@@ -68,93 +60,39 @@ public class Voto {
 		return id;
 	}
 
-	public Voto(int id, String opinion, int calificacion, Ejemplar codigoEjemplar
-			) {
-		
-		this.id = id;
-		this.opinion = opinion;
-		this.calificacion = calificacion;
-//		this.prestamo = prestamo;
-////		this.codigoEjemplar = codigoEjemplar;
-//		this.sedeEmpresa =sedeEmpresa;
-		
-	}
-
-	/**
-	 * @param id the id to set
-	 */
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the opinion
-	 */
+
 	public String getOpinion() {
 		return opinion;
 	}
 
-	/**
-	 * @param opinion the opinion to set
-	 */
+
 	public void setOpinion(String opinion) {
 		this.opinion = opinion;
 	}
 
-	/**
-	 * @return the calificacion
-	 */
+	
 	public int getCalificacion() {
 		return calificacion;
 	}
 
-	/**
-	 * @param calificacion the calificacion to set
-	 */
 	public void setCalificacion(int calificacion) {
 		this.calificacion = calificacion;
 	}
 
-	/**
-	 * @return the prestamo
-	 */
-//	@JsonIgnore
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "prestamo")
-//	public List<Prestamo>  getPrestamo() {
-//		return prestamo;
-//	}
-//
-//	/**
-//	 * @param prestamo the prestamo to set
-//	 */
-//	public void setPrestamo(List<Prestamo> prestamo) {
-//		this.prestamo = prestamo;
-//	}
-
-	/**
-	 * @return the codigoEjemplar
-	 */
-	public Ejemplar getCodigoEjemplar() {
+	Ejemplar getCodigoEjemplar() {
 		return codigoEjemplar;
 	}
 
-	/**
-	 * @param codigoEjemplar the codigoEjemplar to set
-	 */
+	
 	public void setCodigoEjemplar(Ejemplar codigoEjemplar) {
 		this.codigoEjemplar = codigoEjemplar;
 	}
-//	@JsonIgnore
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cod_sede")
-//public List<SedeEmpresa> getSedeEmpresa() {
-//		return sedeEmpresa;
-//	}
-//
-//	public void setSedeEmpresa(List<SedeEmpresa> sedeEmpresa) {
-//		this.sedeEmpresa = sedeEmpresa;
-//	}
 
-	
 
 	// Método ToString
 	@Override

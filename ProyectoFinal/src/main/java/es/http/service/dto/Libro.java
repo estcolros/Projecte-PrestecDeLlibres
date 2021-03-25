@@ -46,21 +46,16 @@ public class Libro {
 
 	
 	// Constructores
-	/**
-	 * 
-	 */
 	
-public Libro() {
+	
+	public Libro() {
 	}
 
 
-	public Libro(int id, String genero, String titulo, String fecha, int isbn, Editorial editorial,
-			Autor autor, Idioma idioma) {
-		super();
+	public Libro(int id, String genero, String titulo, String fecha, int isbn, Editorial editorial,Autor autor, Idioma idioma) {
 		this.id = id;
 		this.genero = genero;
 		this.titulo = titulo;
-		
 		this.fecha = fecha;
 		this.isbn = isbn;
 		this.editorial = editorial;
@@ -68,6 +63,7 @@ public Libro() {
 		this.idioma = idioma;
 	}
 
+	//Getters y Setters
 
 	public int getId() {
 		return id;
@@ -150,6 +146,7 @@ public Libro() {
 	}
 
 
+	//Método toString
 	@Override
 	public String toString() {
 		return "Libro [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha="

@@ -31,7 +31,6 @@ public class Editorial {
 	}
 
 	public Editorial(int id, String nombre, List<Libro> libro) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.libro = libro;

@@ -52,19 +52,11 @@ public class VotoController {
 		Voto Voto_actualizado = new Voto();
 
 		Voto_seleccionado = VotoServiceImpl.VotoXID(id);
-
 		Voto_seleccionado.setOpinion(voto.getOpinion());
 		Voto_seleccionado.setCalificacion(voto.getCalificacion());
 		Voto_seleccionado.setId(voto.getId());
-//		Voto_seleccionado.setCodigoEjemplar(voto.getCodigoEjemplar());
-//		Voto_seleccionado.setPrestamo(voto.getPrestamo());
-//		Voto_seleccionado.setSedeEmpresa(voto.getSedeEmpresa());
-//	
-
 		Voto_actualizado = VotoServiceImpl.actualizarVoto(Voto_seleccionado);
-
-//		System.out.println("El Voto actualizado es: " + Voto_actualizado);
-
+		
 		return Voto_actualizado;
 	}
 

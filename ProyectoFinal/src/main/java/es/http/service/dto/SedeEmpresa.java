@@ -37,11 +37,9 @@ public class SedeEmpresa {
 
 	// Constructores
 	public SedeEmpresa() {
-		super();
 	}
 
 	public SedeEmpresa(int id, String nombre, String localidad, List<Ejemplar> ejemplar) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.localidad = localidad;

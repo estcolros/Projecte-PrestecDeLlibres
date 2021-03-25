@@ -40,8 +40,6 @@ public class NotificacionController {
 
 		Notificacion_xid = NotificacionServiceImpl.NotificacionXID(id);
 
-		// System.out.println("Equipo XID: "+Notificacion_xid);
-
 		return Notificacion_xid;
 	}
 
@@ -60,8 +58,6 @@ public class NotificacionController {
 		Notificacion_seleccionado.setTrabajadorrecibe(Notificacion.getTrabajadorrecibe());
 
 		Notificacion_actualizado = NotificacionServiceImpl.actualizarNotificacion(Notificacion_seleccionado);
-
-		// System.out.println("El Equipo actualizado es: "+ Equipo_actualizado);
 
 		return Notificacion_actualizado;
 	}

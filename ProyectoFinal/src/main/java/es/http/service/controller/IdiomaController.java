@@ -40,8 +40,6 @@ public class IdiomaController {
 
 		Idioma_xid = IdiomaServiceImpl.IdiomaXID(id);
 
-
-
 		return Idioma_xid;
 	}
 
@@ -55,8 +53,6 @@ public class IdiomaController {
 		Idioma_seleccionado.setNombre(Idioma.getNombre());
 	
 		Idioma_actualizado = IdiomaServiceImpl.actualizarIdioma(Idioma_seleccionado);
-
-
 
 		return Idioma_actualizado;
 	}

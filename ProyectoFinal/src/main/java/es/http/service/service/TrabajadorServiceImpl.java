@@ -17,31 +17,31 @@ public class TrabajadorServiceImpl implements ITrabajadorService {
 
 	@Override
 	public List<Trabajador> listarTrabajador() {
-		// TODO Auto-generated method stub
+	
 		return ITrabajadorDAO.findAll();
 	}
 
 	@Override
 	public Trabajador guardarTrabajador(Trabajador Trabajador) {
-		// TODO Auto-generated method stub
+		
 		return ITrabajadorDAO.save(Trabajador);
 	}
 
 	@Override
 	public Trabajador TrabajadorXID(int id) {
-		// TODO Auto-generated method stub
+	
 		return ITrabajadorDAO.findById(id).get();
 	}
 
 	@Override
 	public Trabajador actualizarTrabajador(Trabajador Trabajador) {
-		// TODO Auto-generated method stub
+		
 		return ITrabajadorDAO.save(Trabajador);
 	}
 
 	@Override
 	public void eliminarTrabajador(int id) {
-		// TODO Auto-generated method stub
+	
 		ITrabajadorDAO.deleteById(id);
 	}
 

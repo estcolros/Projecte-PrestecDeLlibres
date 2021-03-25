@@ -23,26 +23,26 @@ public class NotificacionServiceImpl implements INotificacionService {
 
 	@Override
 	public Notificacion guardarNotificacion(Notificacion notificacion) {
-		// TODO Auto-generated method stub
+	
 		return iNotificacionDAO.save(notificacion);
 
 	}
 
 	@Override
 	public Notificacion NotificacionXID(int id) {
-		// TODO Auto-generated method stub
+		
 		return iNotificacionDAO.findById(id).get();
 	}
 
 	@Override
 	public Notificacion actualizarNotificacion(Notificacion notificacion) {
-		// TODO Auto-generated method stub
+
 		return iNotificacionDAO.save(notificacion);
 	}
 
 	@Override
 	public void eliminarNotificacion(int id) {
-		// TODO Auto-generated method stub
+		
 		iNotificacionDAO.deleteById(id);
 	}
 

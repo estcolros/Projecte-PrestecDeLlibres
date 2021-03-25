@@ -43,7 +43,7 @@ public class LibroController {
 
 		Libro_xid = libroServiceImpl.LibroXID(id);
 
-		// System.out.println("Equipo XID: "+Libro_xid);
+		
 
 		return Libro_xid;
 	}
@@ -65,8 +65,6 @@ public class LibroController {
 		Libro_seleccionado.setIdioma(libro.getIdioma());
 		
 		Libro_actualizado = libroServiceImpl.actualizarLibro(Libro_seleccionado);
-
-		// System.out.println("El Equipo actualizado es: "+ Equipo_actualizado);
 
 		return Libro_actualizado;
 	}

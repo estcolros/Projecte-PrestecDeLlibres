@@ -39,9 +39,6 @@ public class TrabajadorController {
 		Trabajador Trabajador_xid = new Trabajador();
 
 		Trabajador_xid = TrabajadorServiceImpl.TrabajadorXID(id);
-
-//				System.out.println("Trabajador XID: "+Trabajador_xid);
-
 		return Trabajador_xid;
 	}
 
@@ -58,16 +55,13 @@ public class TrabajadorController {
 		Trabajador_seleccionado.setApellido2(trabajador.getApellido2());
 		Trabajador_seleccionado.setCorreo(trabajador.getCorreo());
 		Trabajador_seleccionado.setDni(trabajador.getDni());
-		Trabajador_seleccionado.setNotificacion(trabajador.getNotificacion());
 		Trabajador_seleccionado.setPassword(trabajador.getPassword());
 		Trabajador_seleccionado.setTelefono(trabajador.getTelefono());
 		Trabajador_seleccionado.setUser(trabajador.getUser());
-//		Trabajador_seleccionado.setTrabajadorrecibe(trabajador.getTrabajadorrecibe());
+
 
 		Trabajador_actualizado = TrabajadorServiceImpl.actualizarTrabajador(Trabajador_seleccionado);
-
-//				System.out.println("El Trabajador actualizado es: "+ Trabajador_actualizado);
-
+		
 		return Trabajador_actualizado;
 	}
 

@@ -41,8 +41,6 @@ public class AutorController {
 
 		Autor_xid = AutorServiceImpl.AutorXID(id);
 
-			
-
 		return Autor_xid;
 	}
 
@@ -51,14 +49,13 @@ public class AutorController {
 
 		Autor Autor_seleccionado = new Autor();
 		Autor Autor_actualizado = new Autor();
+		
 		Autor_seleccionado = AutorServiceImpl.AutorXID(id);
 		Autor_seleccionado.setNombre(Autor.getNombre());
 		Autor_seleccionado.setApellido(Autor.getApellido());
 		
 		Autor_actualizado = AutorServiceImpl.actualizarAutor(Autor_seleccionado);
-
 		
-
 		return Autor_actualizado;
 	}
 

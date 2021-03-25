@@ -1,3 +1,6 @@
+CREATE DATABASE PLlibres;
+USE PLlibres;
+
 -- MySQL dump 10.13  Distrib 8.0.22, for macos10.15 (x86_64)
 --
 -- Host: 192.168.0.21    Database: PLlibres
@@ -23,11 +26,11 @@ DROP TABLE IF EXISTS `autor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `autor` (
-  `cod_autor` int NOT NULL,
+  `cod_autor` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   `apellido` varchar(250) NOT NULL,
   PRIMARY KEY (`cod_autor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,10 +51,10 @@ DROP TABLE IF EXISTS `editorial`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `editorial` (
-  `cod_editorial` int NOT NULL,
+  `cod_editorial` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   PRIMARY KEY (`cod_editorial`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,18 +78,16 @@ CREATE TABLE `ejemplar` (
   `estado` int NOT NULL,
   `cod_ejemplar` int NOT NULL AUTO_INCREMENT,
   `cod_libro` int NOT NULL,
-  `cod_voto` int NOT NULL,
-  `trabajador_recibe` int DEFAULT NULL,
   `cod_sede` int NOT NULL,
-  `trabajador_presta` int NOT NULL,
+  `trabajador_presta` int DEFAULT NULL,
   PRIMARY KEY (`cod_ejemplar`),
-  KEY `FK_cod_libro` (`cod_libro`),
-  KEY `fk_ejemplar_sedeempresa1_idx` (`cod_sede`),
-  KEY `fk_ejemplar_trabajador1_idx` (`trabajador_presta`),
-  CONSTRAINT `FK_cod_libro` FOREIGN KEY (`cod_libro`) REFERENCES `libro` (`cod_libro`),
-  CONSTRAINT `fk_ejemplar_sedeempresa1` FOREIGN KEY (`cod_sede`) REFERENCES `sedeempresa` (`cod_sede`),
-  CONSTRAINT `fk_ejemplar_trabajador1` FOREIGN KEY (`trabajador_presta`) REFERENCES `trabajador` (`cod_trabajador`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK_ejemplar_trabajador__idx` (`trabajador_presta`),
+  KEY `FK_ejemplar_libro_idx` (`cod_libro`),
+  KEY `fk_ejemplar_sedeempresa_idx` (`cod_sede`),
+  CONSTRAINT `FK_ejemplar_libro` FOREIGN KEY (`cod_libro`) REFERENCES `libro` (`cod_libro`),
+  CONSTRAINT `fk_ejemplar_sedeempresa` FOREIGN KEY (`cod_sede`) REFERENCES `sedeempresa` (`cod_sede`),
+  CONSTRAINT `fk_ejemplar_trabajador` FOREIGN KEY (`trabajador_presta`) REFERENCES `trabajador` (`cod_trabajador`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +96,7 @@ CREATE TABLE `ejemplar` (
 
 LOCK TABLES `ejemplar` WRITE;
 /*!40000 ALTER TABLE `ejemplar` DISABLE KEYS */;
-INSERT INTO `ejemplar` VALUES (10,1,2,1,2,1,1),(10,2,1,1,2,2,2),(10,3,3,1,2,2,3),(10,4,4,1,2,3,4),(10,5,2,1,NULL,1,1);
+INSERT INTO `ejemplar` VALUES (10,1,2,3,1),(10,2,1,2,1),(10,3,3,3,2),(10,4,4,5,6),(10,5,2,2,2),(10,6,2,3,6);
 /*!40000 ALTER TABLE `ejemplar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +132,7 @@ DROP TABLE IF EXISTS `libro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `libro` (
-  `cod_libro` int NOT NULL,
+  `cod_libro` int NOT NULL AUTO_INCREMENT,
   `genero` varchar(250) NOT NULL,
   `titulo` varchar(250) NOT NULL,
   `fecha` date NOT NULL,
@@ -146,7 +147,7 @@ CREATE TABLE `libro` (
   CONSTRAINT `FK_cod_autor` FOREIGN KEY (`cod_autor`) REFERENCES `autor` (`cod_autor`),
   CONSTRAINT `FK_cod_editorial` FOREIGN KEY (`cod_editorial`) REFERENCES `editorial` (`cod_editorial`),
   CONSTRAINT `FK_cod_idioma` FOREIGN KEY (`cod_idioma`) REFERENCES `idioma` (`cod_idioma`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,17 +204,17 @@ CREATE TABLE `prestamo` (
   `fecha_caducidad` date DEFAULT NULL,
   `fecha_alta` date NOT NULL,
   `fecha_devolucion` date DEFAULT NULL,
-  `cod_voto` int NOT NULL,
   `cod_ejemplar` int NOT NULL,
+  `trabajador_presta` int DEFAULT NULL,
   `trabajador_recibe` int DEFAULT NULL,
   PRIMARY KEY (`cod_prestamo`),
   KEY `fk_prestamo_ejemplar1_idx` (`cod_ejemplar`),
+  KEY `fk_prestamo_trabajador_idx` (`trabajador_presta`),
   KEY `fk_prestamo_trabajador1_idx` (`trabajador_recibe`),
-  KEY `fk_prestamo_voto_idx` (`cod_voto`),
   CONSTRAINT `fk_prestamo_ejemplar1` FOREIGN KEY (`cod_ejemplar`) REFERENCES `ejemplar` (`cod_ejemplar`),
-  CONSTRAINT `fk_prestamo_trabajador1` FOREIGN KEY (`trabajador_recibe`) REFERENCES `trabajador` (`cod_trabajador`),
-  CONSTRAINT `fk_prestamo_voto` FOREIGN KEY (`cod_voto`) REFERENCES `voto` (`cod_voto`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_prestamo_trabajador` FOREIGN KEY (`trabajador_presta`) REFERENCES `trabajador` (`cod_trabajador`),
+  CONSTRAINT `fk_prestamo_trabajador1` FOREIGN KEY (`trabajador_recibe`) REFERENCES `trabajador` (`cod_trabajador`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +223,7 @@ CREATE TABLE `prestamo` (
 
 LOCK TABLES `prestamo` WRITE;
 /*!40000 ALTER TABLE `prestamo` DISABLE KEYS */;
-INSERT INTO `prestamo` VALUES (1,'2021-01-01','2021-01-01','2021-01-01',1,1,1),(2,'2021-01-01','2021-01-02','2021-02-01',2,1,2),(3,'2021-01-01','2021-01-03','2021-02-01',3,1,3),(4,'2021-01-01','2021-01-04','2021-02-01',4,1,4),(5,'2021-01-01','2021-01-04','2021-02-01',4,1,NULL);
+INSERT INTO `prestamo` VALUES (1,'2021-01-01','2021-01-01','2021-01-01',1,4,1),(2,'2021-01-01','2021-01-02','2021-02-01',1,3,2),(3,'2021-01-01','2021-01-03','2021-02-01',3,2,3),(4,'2021-01-01','2021-01-04','2021-02-01',2,1,4),(5,'2021-01-01','2021-01-04','2021-02-01',1,3,NULL),(6,'2021-01-01','2021-01-01','2021-01-01',6,6,1);
 /*!40000 ALTER TABLE `prestamo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +269,6 @@ CREATE TABLE `trabajador` (
   `DNI` char(9) NOT NULL,
   `user` char(9) NOT NULL,
   `password` char(9) NOT NULL,
-  `trabajador_recibe` int DEFAULT NULL,
   PRIMARY KEY (`cod_trabajador`),
   UNIQUE KEY `DNI` (`DNI`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -280,8 +280,32 @@ CREATE TABLE `trabajador` (
 
 LOCK TABLES `trabajador` WRITE;
 /*!40000 ALTER TABLE `trabajador` DISABLE KEYS */;
-INSERT INTO `trabajador` VALUES (1,'Estefania','Colombo','Rosario','650668915','estefania.c.r@t-systems.com','481615178','estcolros','pass123',1),(2,'Cristina','Cano','Porta','633668915','cristinacp@t-systems.com','654615178','cricanpor','pass321',2),(3,'Sara','Fernandez','Tomi','656898915','saraft@t-systems.com','498715178','sarfertom','pass456',3),(4,'Victor','Fernandez','Lopez','656898123','victorfl@t-systems.com','569715178','vicferlop','pass654',1),(5,'David','Torres','Garcia','591398915','davidtg@t-systems.com','498716379','davtorgar','pass789',1),(6,'Pepe','Torres','Garcia','981398915','pepetg@t-systems.com','498896379','ptorgar','pass777',NULL);
+INSERT INTO `trabajador` VALUES (1,'Estefania','Colombo','Rosario','650668915','estefania.c.r@t-systems.com','481615178','estcolros','pass123'),(2,'Cristina','Cano','Porta','633668915','cristinacp@t-systems.com','654615178','cricanpor','pass321'),(3,'Sara','Fernandez','Tomi','656898915','saraft@t-systems.com','498715178','sarfertom','pass456'),(4,'Victor','Fernandez','Lopez','656898123','victorfl@t-systems.com','569715178','vicferlop','pass654'),(5,'David','Torres','Garcia','591398915','davidtg@t-systems.com','498716379','davtorgar','pass789'),(6,'Pepe','Torres','Garcia','981398915','pepetg@t-systems.com','498896379','ptorgar','pass777');
 /*!40000 ALTER TABLE `trabajador` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `id` varchar(250) NOT NULL,
+  `username` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES ('1','admin','$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -295,8 +319,6 @@ CREATE TABLE `voto` (
   `opinion` varchar(250) NOT NULL,
   `calificacion` int NOT NULL,
   `cod_voto` int NOT NULL AUTO_INCREMENT,
-  `cod_prestamo` int NOT NULL,
-  `cod_sede` int NOT NULL,
   `cod_ejemplar` int NOT NULL,
   PRIMARY KEY (`cod_voto`),
   KEY `fk_voto_ejemplar1_idx` (`cod_ejemplar`),
@@ -310,7 +332,7 @@ CREATE TABLE `voto` (
 
 LOCK TABLES `voto` WRITE;
 /*!40000 ALTER TABLE `voto` DISABLE KEYS */;
-INSERT INTO `voto` VALUES ('Muy interesante',9,1,1,2,2),('Muy aburrido',2,2,1,2,1),('Muy aburrido',2,3,1,2,2),('Interesante',5,4,2,3,1),('Pesimo',0,6,5,3,1);
+INSERT INTO `voto` VALUES ('Muy interesante',9,1,2),('Muy aburrido',2,2,3),('Muy aburrido',2,3,1),('Interesante',5,4,3),('Pesimo',0,6,1);
 /*!40000 ALTER TABLE `voto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -323,4 +345,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-24 12:58:58
+-- Dump completed on 2021-03-25 15:33:06

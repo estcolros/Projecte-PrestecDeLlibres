@@ -17,31 +17,31 @@ public class PrestamoServiceImpl implements IPrestamoService {
 
 	@Override
 	public List<Prestamo> listarPrestamo() {
-		// TODO Auto-generated method stub
+		
 		return iPrestamoDAO.findAll();
 	}
 
 	@Override
 	public Prestamo guardarPrestamo(Prestamo prestamo) {
-		// TODO Auto-generated method stub
+		
 		return iPrestamoDAO.save(prestamo);
 	}
 
 	@Override
 	public Prestamo PrestamoXID(int id) {
-		// TODO Auto-generated method stub
+		
 		return iPrestamoDAO.findById(id).get();
 	}
 
 	@Override
 	public Prestamo actualizarPrestamo(Prestamo prestamo) {
-		// TODO Auto-generated method stub
+	
 		return iPrestamoDAO.save(prestamo);
 	}
 
 	@Override
 	public void eliminarPrestamo(int id) {
-		// TODO Auto-generated method stub
+	
 		iPrestamoDAO.deleteById(id);
 	}
 

@@ -34,12 +34,12 @@ public class Idioma {
 	}
 
 	public Idioma(int cod_idioma, String nombre, List<Libro> cod_libro) {
-		super();
 		this.cod_idioma = cod_idioma;
 		this.nombre = nombre;
 		this.cod_libro = cod_libro;
 	}
 
+	
 	// Getters y Setters
 	public int getCod_idioma() {
 		return cod_idioma;

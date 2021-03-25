@@ -53,10 +53,7 @@ public class EditorialController {
 
 		Editorial_seleccionado = EditorialServiceImpl.EditorialXID(id);
 		Editorial_seleccionado.setNombre(Editorial.getNombre());
-		
 		Editorial_actualizado = EditorialServiceImpl.actualizarEditorial(Editorial_seleccionado);
-
-		
 
 		return Editorial_actualizado;
 	}

@@ -17,31 +17,31 @@ public class SedeEmpresaServiceImpl implements ISedeEmpresaService {
 
 	@Override
 	public List<SedeEmpresa> listarSedeEmpresa() {
-		// TODO Auto-generated method stub
+		
 		return ISedeEmpresaDAO.findAll();
 	}
 
 	@Override
 	public SedeEmpresa guardarSedeEmpresa(SedeEmpresa SedeEmpresa) {
-		// TODO Auto-generated method stub
+		
 		return ISedeEmpresaDAO.save(SedeEmpresa);
 	}
 
 	@Override
 	public SedeEmpresa SedeEmpresaXID(int id) {
-		// TODO Auto-generated method stub
+		
 		return ISedeEmpresaDAO.findById(id).get();
 	}
 
 	@Override
 	public SedeEmpresa actualizarSedeEmpresa(SedeEmpresa SedeEmpresa) {
-		// TODO Auto-generated method stub
+
 		return ISedeEmpresaDAO.save(SedeEmpresa);
 	}
 
 	@Override
 	public void eliminarSedeEmpresa(int id) {
-		// TODO Auto-generated method stub
+	
 		ISedeEmpresaDAO.deleteById(id);
 
 	}

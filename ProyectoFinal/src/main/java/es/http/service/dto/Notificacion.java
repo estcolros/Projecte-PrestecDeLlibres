@@ -40,25 +40,20 @@ public class Notificacion {
 	private Trabajador trabajadorrecibe;
 	
 	// Constructores
-	/**
-	 * 
-	 */
+	
 	public Notificacion() {
 		
 	}
 
 
 	// Getters y Setters
-	/**
-	 * @return the id
-	 */
+	
 	public int getId() {
 		return id;
 	}
 
 
-	public Notificacion(int id, String mensaje, int leido, Trabajador trabajador, es.http.service.dto.Prestamo prestamo,
-			Trabajador trabajadorrecibe) {
+	public Notificacion(int id, String mensaje, int leido, Trabajador trabajador, es.http.service.dto.Prestamo prestamo,Trabajador trabajadorrecibe) {
 		super();
 		this.id = id;
 		this.mensaje = mensaje;
@@ -69,52 +64,39 @@ public class Notificacion {
 	}
 
 
-	/**
-	 * @param id the id to set
-	 */
+	//Getters y Setters
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the mensaje
-	 */
+
 	public String getMensaje() {
 		return mensaje;
 	}
 
-	/**
-	 * @param mensaje the mensaje to set
-	 */
+	
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
 
-	/**
-	 * @return the leido
-	 */
+
 	public int getLeido() {
 		return leido;
 	}
 
-	/**
-	 * @param leido the leido to set
-	 */
+	
 	public void setLeido(int leido) {
 		this.leido = leido;
 	}
 
-	/**
-	 * @return the trabajador
-	 */
+
 	
 	public Trabajador getTrabajador() {
 		return trabajador;
 	}
 
-	/**
-	 * @param trabajador the trabajador to set
-	 */
+
 	public void setTrabajador(Trabajador trabajador) {
 		this.trabajador = trabajador;
 	}
@@ -140,6 +122,7 @@ public class Notificacion {
 	}
 
 
+	// Método ToString
 	@Override
 	public String toString() {
 		return "Notificacion [id=" + id + ", mensaje=" + mensaje + ", leido=" + leido + ", trabajador=" + trabajador
@@ -147,7 +130,7 @@ public class Notificacion {
 	}
 
 
-	// Método ToString
+
 	
 
 }

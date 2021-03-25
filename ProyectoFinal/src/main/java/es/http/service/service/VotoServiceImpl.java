@@ -16,31 +16,31 @@ public class VotoServiceImpl implements IVotoService {
 
 	@Override
 	public List<Voto> listarVoto() {
-		// TODO Auto-generated method stub
+		
 		return IVotoDAO.findAll();
 	}
 
 	@Override
 	public Voto guardarVoto(Voto Voto) {
-		// TODO Auto-generated method stub
+		
 		return IVotoDAO.save(Voto);
 	}
 
 	@Override
 	public Voto VotoXID(int id) {
-		// TODO Auto-generated method stub
+		
 		return IVotoDAO.findById(id).get();
 	}
 
 	@Override
 	public Voto actualizarVoto(Voto Voto) {
-		// TODO Auto-generated method stub
+		
 		return IVotoDAO.save(Voto);
 	}
 
 	@Override
 	public void eliminarVoto(int id) {
-		// TODO Auto-generated method stub
+		
 		IVotoDAO.deleteById(id);
 	}
 

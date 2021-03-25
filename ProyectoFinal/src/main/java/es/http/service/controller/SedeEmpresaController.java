@@ -54,11 +54,10 @@ public class SedeEmpresaController {
 		SedeEmpresa_seleccionado = SedeEmpresaServiceImpl.SedeEmpresaXID(id);
 
 		SedeEmpresa_seleccionado.setNombre(sedeEmpresa.getNombre());
-		
 		SedeEmpresa_seleccionado.setLocalidad(sedeEmpresa.getLocalidad());
 		SedeEmpresa_actualizado = SedeEmpresaServiceImpl.actualizarSedeEmpresa(SedeEmpresa_seleccionado);
 
-//			System.out.println("El SedeEmpresa actualizado es: "+ SedeEmpresa_actualizado);
+
 
 		return SedeEmpresa_actualizado;
 	}

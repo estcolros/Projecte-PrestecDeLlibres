@@ -34,7 +34,6 @@ public class Autor {
 
 	// Constructor con todos los atributos
 	public Autor(int id, String nombre, String apellido, List<Libro> libro) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;

@@ -40,7 +40,6 @@ public class PrestamoController {
 
 		Prestamo_xid = PrestamoServiceImpl.PrestamoXID(id);
 
-		// System.out.println("Equipo XID: "+Prestamo_xid);
 
 		return Prestamo_xid;
 	}
@@ -56,9 +55,7 @@ public class PrestamoController {
 		Prestamo_seleccionado.setFechaalta(Prestamo.getFechaalta());
 		Prestamo_seleccionado.setFechacaducidad(Prestamo.getFechacaducidad());
 		Prestamo_seleccionado.setFechadevolucion(Prestamo.getFechadevolucion());
-		Prestamo_seleccionado.setNotificacion(Prestamo.getNotificacion());
 		Prestamo_seleccionado.setId(Prestamo.getId());
-//		Prestamo_seleccionado.setVoto(Prestamo.getVoto());
 		Prestamo_seleccionado.setEjemplar(Prestamo.getEjemplar());
 		Prestamo_seleccionado.setTrabajadorpresta(Prestamo.getTrabajadorpresta());
 		Prestamo_seleccionado.setTrabajadorrecibe(Prestamo.getTrabajadorrecibe());
