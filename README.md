@@ -53,19 +53,19 @@ votación/puntuación/opinión sobre los libros.
 ### Diseño base de datos 
 
 #### Módelo ERR
-![ERR PLlibres](https://user-images.githubusercontent.com/78431881/112317681-952dc380-8cac-11eb-9351-f1b196439dd8.png)
+![ERR PLlibres](https://user-images.githubusercontent.com/78431881/112511483-bec11a80-8d92-11eb-9056-eee8f42057cd.png)
 
 #### Módelo relacional
 - **Libro (cod_libro,** genero, titulo, fecha, ISBN)
 - **Editorial (cod_editorial,** nombre)
 - **Autor (cod_autor,** nombre, apellido)
 - **Idioma (cod_idioma,** nombre)
-- **Ejemplar (cod_libro, cod_ejemplar, cod_sede, cod_voto, cod_prestamo, cod_trabajador,** estado)
+- **Ejemplar (cod_libro, cod_ejemplar, cod_sede, cod_trabajador,** estado)
 - **SedeEmpresa (cod_sede,** nombre, localidad)
-- **Voto(cod_voto, cod_ejemplar , cod_prestamo,** opinión, calificación)
-- **Prestamo (cod_prestamo, cod_voto, cod_notificacion, cod_trabajador, cod_ejemplar,** fecha_caducidad, fecha_alta, fecha_devolucion)
+- **Voto(cod_voto, cod_ejemplar** opinión, calificación)
+- **Prestamo (cod_prestamo, cod_notificacion, cod_trabajador, cod_ejemplar,** fecha_caducidad, fecha_alta, fecha_devolucion)
 - **Notificacion (cod_notificacion, cod_préstamo, cod_trabajador,** mensaje, leído)
-- **Trabajador (cod_trabajador, cod_ejemplar, cod_notificacion, cod_prestamo,** nombre, apellido1, apellido2, correo, DNI, user,   password)
+- **Trabajador (cod_trabajador,** nombre, apellido1, apellido2, correo, DNI, user,   password)
 
 ### Backend
 
