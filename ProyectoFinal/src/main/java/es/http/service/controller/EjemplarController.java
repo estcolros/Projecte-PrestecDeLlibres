@@ -57,6 +57,7 @@ public class EjemplarController {
 		Ejemplar_seleccionado.setCod_libro(ejemplar.getCod_libro());
 //		Ejemplar_seleccionado.setCod_prestamo(ejemplar.getCod_prestamo());
 		Ejemplar_seleccionado.setCod_sede(ejemplar.getCod_sede());
+//		Ejemplar_seleccionado.setVoto(ejemplar.getVoto());
 		
 		Ejemplar_actualizado = EjemplarServiceImpl.actualizarEjemplar(Ejemplar_seleccionado);
 

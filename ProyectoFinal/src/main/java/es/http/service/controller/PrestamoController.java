@@ -58,7 +58,7 @@ public class PrestamoController {
 		Prestamo_seleccionado.setFechadevolucion(Prestamo.getFechadevolucion());
 		Prestamo_seleccionado.setNotificacion(Prestamo.getNotificacion());
 		Prestamo_seleccionado.setId(Prestamo.getId());
-		Prestamo_seleccionado.setVoto(Prestamo.getVoto());
+//		Prestamo_seleccionado.setVoto(Prestamo.getVoto());
 		Prestamo_seleccionado.setEjemplar(Prestamo.getEjemplar());
 		Prestamo_seleccionado.setTrabajadorpresta(Prestamo.getTrabajadorpresta());
 		Prestamo_seleccionado.setTrabajadorrecibe(Prestamo.getTrabajadorrecibe());

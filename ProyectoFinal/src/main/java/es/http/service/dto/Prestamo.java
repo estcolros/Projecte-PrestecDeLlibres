@@ -35,9 +35,9 @@ public class Prestamo {
 	@JoinColumn(name = "cod_notificacion")
 	private List<Notificacion> notificacion;
 
-	@ManyToOne(targetEntity=es.http.service.dto.Voto.class)
-	@JoinColumn(name="cod_voto")
-	private Voto voto;
+//	@ManyToOne(targetEntity=es.http.service.dto.Voto.class)
+//	@JoinColumn(name="cod_voto")
+//	private Voto voto;
 	
 	@ManyToOne(targetEntity=es.http.service.dto.Trabajador.class)
 	@JoinColumn(name="trabajador_recibe")
@@ -77,7 +77,7 @@ public class Prestamo {
 	
 
 	public Prestamo(int id, String fechacaducidad, String fechaalta, String fechadevolucion,
-			List<Notificacion> notificacion, Voto voto, Trabajador trabajadorrecibe, Trabajador trabajadorpresta,
+			List<Notificacion> notificacion, Trabajador trabajadorrecibe, Trabajador trabajadorpresta,
 			Ejemplar ejemplar) {
 		super();
 		this.id = id;
@@ -85,7 +85,7 @@ public class Prestamo {
 		this.fechaalta = fechaalta;
 		this.fechadevolucion = fechadevolucion;
 		this.notificacion = notificacion;
-		this.voto = voto;
+//		this.voto = voto;
 		this.trabajadorrecibe = trabajadorrecibe;
 		this.trabajadorpresta = trabajadorpresta;
 		this.ejemplar = ejemplar;
@@ -157,14 +157,14 @@ public class Prestamo {
 	}
 
 	
-
-	public Voto getVoto() {
-		return voto;
-	}
-
-	public void setVoto(Voto voto) {
-		this.voto = voto;
-	}
+//
+//	public Voto getVoto() {
+//		return voto;
+//	}
+//
+//	public void setVoto(Voto voto) {
+//		this.voto = voto;
+//	}
 
 
 	public Ejemplar getEjemplar() {
@@ -196,7 +196,7 @@ public class Prestamo {
 	@Override
 	public String toString() {
 		return "Prestamo [id=" + id + ", fechacaducidad=" + fechacaducidad + ", fechaalta=" + fechaalta
-				+ ", fechadevolucion=" + fechadevolucion + ", notificacion=" + notificacion + ", voto=" + voto
+				+ ", fechadevolucion=" + fechadevolucion + ", notificacion=" + notificacion 
 				+ ", trabajadorrecibe=" + trabajadorrecibe + ", trabajadorpresta=" + trabajadorpresta + ", ejemplar="
 				+ ejemplar + "]";
 	}

@@ -1,6 +1,8 @@
 package es.http.service.dto;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,12 +33,22 @@ public class Ejemplar {
 	@ManyToOne(targetEntity=es.http.service.dto.Libro.class)
 	@JoinColumn(name = "cod_libro")
 	private Libro cod_libro;
-	@OneToMany
-	@JoinColumn(name = "cod_prestamo") 
-	private List<Prestamo> cod_prestamo;
+//	@OneToMany
+//	@JoinColumn(name = "cod_prestamo") 
+//	private List<Prestamo> cod_prestamo;
 	@ManyToOne(targetEntity=es.http.service.dto.SedeEmpresa.class)
 	@JoinColumn(name = "cod_sede")
 	private SedeEmpresa cod_sede;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Trabajador.class)
+	@JoinColumn(name="trabajador_presta")
+	private Trabajador trabajador_presta;
+	
+	
+//	
+//	@OneToMany
+//	@JoinColumn(name="cod_voto")
+//	private Set<Voto> voto;
 	
 	
 
@@ -44,13 +56,15 @@ public class Ejemplar {
 	}
 
 
-	public Ejemplar(int id, int estado, Libro cod_libro, List<Prestamo> cod_prestamo, SedeEmpresa cod_sede ) {
+	public Ejemplar(int id, int estado, Libro cod_libro, SedeEmpresa cod_sede, Trabajador trabajador_presta) {
 		super();
 		this.id = id;
 		this.estado = estado;
 		this.cod_libro = cod_libro;
-		this.cod_prestamo = cod_prestamo;
+//		this.cod_prestamo = cod_prestamo;
 		this.cod_sede = cod_sede;
+//		this.voto=voto;
+		this.trabajador_presta= trabajador_presta;
 	
 	}
 
@@ -84,15 +98,15 @@ public class Ejemplar {
 		this.cod_libro = cod_libro;
 	}
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
-	public List<Prestamo> getCod_prestamo() {
-		return cod_prestamo;
-	}
-
-	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
-		this.cod_prestamo = cod_prestamo;
-	}
+//	@JsonIgnore
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Prestamo")
+//	public List<Prestamo> getCod_prestamo() {
+//		return cod_prestamo;
+//	}
+//
+//	public void setCod_prestamo(List<Prestamo> cod_prestamo) {
+//		this.cod_prestamo = cod_prestamo;
+//	}
 
 	public SedeEmpresa getCod_sede() {
 		return cod_sede;
@@ -109,6 +123,26 @@ public class Ejemplar {
 
 
 
+public Trabajador getTrabajador_presta() {
+		return trabajador_presta;
+	}
+
+
+	public void setTrabajador_presta(Trabajador trabajador_presta) {
+		this.trabajador_presta = trabajador_presta;
+	}
+
+
+////	//	@JsonIgnore
+//	@OneToMany
+//	public Set<Voto> getVoto() {
+//		return voto;
+//	}
+//
+//
+//	public void setVoto(Set<Voto> voto) {
+//		this.voto = voto;
+//	}
 
 
 	// Método ToString
