@@ -15,7 +15,8 @@ import es.http.service.dao.IUsuarioDAO;
 import es.http.service.dto.Usuario;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 public class UsuarioController {
 
 	private IUsuarioDAO iUsuarioDAO;

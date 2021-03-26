@@ -11,36 +11,99 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+//Nos centramos en la tabla Voto
 @Entity
-@Table(name="Trabajador")
+@Table(name = "voto")
 public class Voto {
 
+	// Atributos de Voto
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
+	@Column (name="cod_voto")
 	private int id;
 
-	@Column(name = "opinion")//no hace falta si se llama igual
+	@Column(name = "opinion") 
 	private String opinion;
-	@Column(name = "calificacion")//no hace falta si se llama igual
+	@Column(name = "calificacion") 
 	private int calificacion;
-	//PREGUNTAR DEBILES A JOSE!!!!!
-	
-	
-	@OneToMany
-	@JoinColumn(name="id")
-    private List<Prestamo> Prestamo;
-	
+
+
 	@ManyToOne
-    @JoinColumn(name = "id")
-    Ejemplar codigoEjemplar;
+	@JoinColumn(name = "cod_ejemplar")
+	private Ejemplar codigoEjemplar;
 
+	
+	// Constructores
+	
+
+	
+	public Voto() {
+		
+	}
+
+	public Voto(int id, String opinion, int calificacion, Ejemplar codigoEjemplar) {
+		this.id = id;
+			this.opinion = opinion;
+			this.calificacion = calificacion;
+		
+		}
+
+
+	// Getters y Setters
+	
+	public int getId() {
+		return id;
+	}
+
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getOpinion() {
+		return opinion;
+	}
+
+
+	public void setOpinion(String opinion) {
+		this.opinion = opinion;
+	}
+
+	
+	public int getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(int calificacion) {
+		this.calificacion = calificacion;
+	}
+
+	Ejemplar getCodigoEjemplar() {
+		return codigoEjemplar;
+	}
+
+	
+	public void setCodigoEjemplar(Ejemplar codigoEjemplar) {
+		this.codigoEjemplar = codigoEjemplar;
+	}
+
+
+	// Método ToString
+	@Override
+	public String toString() {
+		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion +"]";
+	}
 
 	
 
+	
 
+	
 
 }

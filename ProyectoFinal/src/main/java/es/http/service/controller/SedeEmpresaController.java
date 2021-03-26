@@ -19,61 +19,52 @@ import es.http.service.service.SedeEmpresaServiceImpl;
 @RequestMapping("/api")
 public class SedeEmpresaController {
 
-		
-		@Autowired
-		SedeEmpresaServiceImpl SedeEmpresaServiceImpl;
-		
-		@GetMapping("/sedeEmpresa")
-		public List<SedeEmpresa> listarSedeEmpresa(){
-			return SedeEmpresaServiceImpl.listarSedeEmpresa();
-		}
-		
-		
-		@PostMapping("/sedeEmpresas")
-		public SedeEmpresa salvarSedeEmpresa(@RequestBody SedeEmpresa sedeEmpresa) {
-			
-			return SedeEmpresaServiceImpl.guardarSedeEmpresa(sedeEmpresa);
-		}
-		
-		
-		@GetMapping("/sedeEmpresas/{id}")
-		public SedeEmpresa SedeEmpresaXID(@PathVariable(name="id") int id) {
-			
-			SedeEmpresa SedeEmpresa_xid= new SedeEmpresa();
-			
-			SedeEmpresa_xid=SedeEmpresaServiceImpl.SedeEmpresaXID(id);
-			
-//			System.out.println("SedeEmpresa XID: "+SedeEmpresa_xid);
-			
-			return SedeEmpresa_xid;
-		}
-		
-		@PutMapping("/sedeEmpresa/{id}")
-		public SedeEmpresa actualizarSedeEmpresa(@PathVariable(name="id")int id,@RequestBody SedeEmpresa sedeEmpresa) {
-			
-			SedeEmpresa SedeEmpresa_seleccionado= new SedeEmpresa();
-			SedeEmpresa SedeEmpresa_actualizado= new SedeEmpresa();
-			
-			SedeEmpresa_seleccionado= SedeEmpresaServiceImpl.SedeEmpresaXID(id);
-			
-			SedeEmpresa_seleccionado.setNombre(sedeEmpresa.getNombre());
-			SedeEmpresa_seleccionado.setEjemplar(sedeEmpresa.getEjemplar());
-			SedeEmpresa_seleccionado.setLocalidad(sedeEmpresa.getLocalidad());
-			SedeEmpresa_actualizado = SedeEmpresaServiceImpl.actualizarSedeEmpresa(SedeEmpresa_seleccionado);
-			
-//			System.out.println("El SedeEmpresa actualizado es: "+ SedeEmpresa_actualizado);
-			
-			return SedeEmpresa_actualizado;
-		}
-		
-		@DeleteMapping("/sedeEmpresa/{id}")
-		public void eleiminarSedeEmpresa(@PathVariable(name="id")int id) {
-			SedeEmpresaServiceImpl.eliminarSedeEmpresa(id);
-		}
-		
-		
+	@Autowired
+	SedeEmpresaServiceImpl SedeEmpresaServiceImpl;
 
-	
-	
-	
+	@GetMapping("/sedeEmpresas")
+	public List<SedeEmpresa> listarSedeEmpresa() {
+		return SedeEmpresaServiceImpl.listarSedeEmpresa();
+	}
+
+	@PostMapping("/sedeEmpresas")
+	public SedeEmpresa salvarSedeEmpresa(@RequestBody SedeEmpresa sedeEmpresa) {
+
+		return SedeEmpresaServiceImpl.guardarSedeEmpresa(sedeEmpresa);
+	}
+
+	@GetMapping("/sedeEmpresa/{id}")
+	public SedeEmpresa SedeEmpresaXID(@PathVariable(name = "id") int id) {
+
+		SedeEmpresa SedeEmpresa_xid = new SedeEmpresa();
+
+		SedeEmpresa_xid = SedeEmpresaServiceImpl.SedeEmpresaXID(id);
+
+//			System.out.println("SedeEmpresa XID: "+SedeEmpresa_xid);
+
+		return SedeEmpresa_xid;
+	}
+
+	@PutMapping("/sedeEmpresa/{id}")
+	public SedeEmpresa actualizarSedeEmpresa(@PathVariable(name = "id") int id, @RequestBody SedeEmpresa sedeEmpresa) {
+
+		SedeEmpresa SedeEmpresa_seleccionado = new SedeEmpresa();
+		SedeEmpresa SedeEmpresa_actualizado = new SedeEmpresa();
+
+		SedeEmpresa_seleccionado = SedeEmpresaServiceImpl.SedeEmpresaXID(id);
+
+		SedeEmpresa_seleccionado.setNombre(sedeEmpresa.getNombre());
+		SedeEmpresa_seleccionado.setLocalidad(sedeEmpresa.getLocalidad());
+		SedeEmpresa_actualizado = SedeEmpresaServiceImpl.actualizarSedeEmpresa(SedeEmpresa_seleccionado);
+
+
+
+		return SedeEmpresa_actualizado;
+	}
+
+	@DeleteMapping("/sedeEmpresa/{id}")
+	public void eleiminarSedeEmpresa(@PathVariable(name = "id") int id) {
+		SedeEmpresaServiceImpl.eliminarSedeEmpresa(id);
+	}
+
 }
