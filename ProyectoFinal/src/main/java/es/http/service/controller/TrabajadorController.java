@@ -41,6 +41,14 @@ public class TrabajadorController {
 		Trabajador_xid = TrabajadorServiceImpl.TrabajadorXID(id);
 		return Trabajador_xid;
 	}
+	@GetMapping("/trabajadoru/{user}")
+	public Trabajador TrabajadorXID(@PathVariable(name = "user") String user) {
+
+		Trabajador Trabajador_xid = new Trabajador();
+
+		Trabajador_xid = TrabajadorServiceImpl.TrabajadorXuser(user);
+		return Trabajador_xid;
+	}
 
 	@PutMapping("/trabajador/{id}")
 	public Trabajador actualizarTrabajador(@PathVariable(name = "id") int id, @RequestBody Trabajador trabajador) {

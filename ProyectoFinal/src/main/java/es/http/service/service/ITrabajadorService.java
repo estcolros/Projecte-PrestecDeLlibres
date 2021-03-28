@@ -12,6 +12,9 @@ public interface ITrabajadorService {
 	public Trabajador guardarTrabajador(Trabajador Trabajador); // Guarda un AsignadoA CREATE
 
 	public Trabajador TrabajadorXID(int id); // Leer datos de un AsignadoA READ
+	
+	public Trabajador TrabajadorXuser(String user); //Leer datos de un trabajador por username
+	
 
 	public Trabajador actualizarTrabajador(Trabajador Trabajador); // Actualiza datos del AsignadoA UPDATE
 

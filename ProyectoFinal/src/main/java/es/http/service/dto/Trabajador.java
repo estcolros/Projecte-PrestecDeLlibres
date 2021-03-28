@@ -39,7 +39,7 @@ public class Trabajador {
 	@Column(name = "DNI") 
 	private String dni;
 	@Column(name = "user") 
-	private String user;
+	private String username;
 	@Column(name = "password") 
 	private String password;
 	
@@ -59,7 +59,7 @@ public class Trabajador {
 		this.telefono = telefono;
 		this.correo = correo;
 		this.dni = dni;
-		this.user = user;
+		this.username = user;
 		this.password = password;
 
 		
@@ -123,11 +123,11 @@ public class Trabajador {
 	}
 
 	public String getUser() {
-		return user;
+		return username;
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.username = user;
 	}
 
 	public String getPassword() {
@@ -144,10 +144,11 @@ public class Trabajador {
 	@Override
 	public String toString() {
 		return "Trabajador [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
-				+ ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + ", user=" + user + ", password="
+				+ ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + ", user=" + username + ", password="
 				+ password + "]";
 	}
 
+	
 	
 
 }

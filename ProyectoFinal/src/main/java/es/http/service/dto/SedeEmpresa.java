@@ -33,7 +33,7 @@ public class SedeEmpresa {
 
 	@OneToMany
 	@JoinColumn(name = "cod_ejemplar")
-	private List<Ejemplar> Ejemplar;
+	private List<Ejemplar> ejemplar;
 
 	// Constructores
 	public SedeEmpresa() {
@@ -43,7 +43,7 @@ public class SedeEmpresa {
 		this.id = id;
 		this.nombre = nombre;
 		this.localidad = localidad;
-		Ejemplar = ejemplar;
+		this.ejemplar = ejemplar;
 	}
 
 	// Getters y Setters
@@ -74,11 +74,11 @@ public class SedeEmpresa {
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ejemplar")
 	public List<Ejemplar> getEjemplar() {
-		return Ejemplar;
+		return ejemplar;
 	}
 
 	public void setEjemplar(List<Ejemplar> ejemplar) {
-		Ejemplar = ejemplar;
+		ejemplar = ejemplar;
 	}
 
 	// Método ToString
