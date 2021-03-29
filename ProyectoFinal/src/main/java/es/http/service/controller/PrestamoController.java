@@ -3,6 +3,7 @@ package es.http.service.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,9 @@ import es.http.service.dto.Prestamo;
 import es.http.service.service.PrestamoServiceImpl;
 
 @RestController
-@RequestMapping(value="/api")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
+@RequestMapping("/api")
 public class PrestamoController {
 	@Autowired
 	PrestamoServiceImpl PrestamoServiceImpl;

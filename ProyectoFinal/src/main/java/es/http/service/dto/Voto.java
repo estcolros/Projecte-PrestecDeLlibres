@@ -33,7 +33,7 @@ public class Voto {
 	private int calificacion;
 
 
-	@ManyToOne
+	@ManyToOne(targetEntity= es.http.service.dto.Ejemplar.class)
 	@JoinColumn(name = "cod_ejemplar")
 	private Ejemplar codigoEjemplar;
 
@@ -50,6 +50,7 @@ public class Voto {
 		this.id = id;
 			this.opinion = opinion;
 			this.calificacion = calificacion;
+			this.codigoEjemplar= codigoEjemplar;
 		
 		}
 
@@ -84,7 +85,7 @@ public class Voto {
 		this.calificacion = calificacion;
 	}
 
-	Ejemplar getCodigoEjemplar() {
+	public Ejemplar getCodigoEjemplar() {
 		return codigoEjemplar;
 	}
 
@@ -97,7 +98,7 @@ public class Voto {
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion +"]";
+		return "Voto [id=" + id + ", opinion=" + opinion + ", calificacion=" + calificacion +", ejemplar="+ codigoEjemplar+"]";
 	}
 
 	
