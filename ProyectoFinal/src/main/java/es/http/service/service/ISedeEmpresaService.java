@@ -9,12 +9,12 @@ public interface ISedeEmpresaService {
 	// Metodos del CRUD
 	public List<SedeEmpresa> listarSedeEmpresa(); // Listar All
 
-	public SedeEmpresa guardarSedeEmpresa(SedeEmpresa SedeEmpresa); // Guarda un AsignadoA CREATE
+	public SedeEmpresa guardarSedeEmpresa(SedeEmpresa SedeEmpresa); // Guarda una SedeEmpresa CREATE
 
-	public SedeEmpresa SedeEmpresaXID(int id); // Leer datos de un AsignadoA READ
+	public SedeEmpresa SedeEmpresaXID(int id); // Leer datos de una SedeEmpresa READ
 
-	public SedeEmpresa actualizarSedeEmpresa(SedeEmpresa SedeEmpresa); // Actualiza datos del AsignadoA UPDATE
+	public SedeEmpresa actualizarSedeEmpresa(SedeEmpresa SedeEmpresa); // Actualiza datos de la SedeEmpresa UPDATE
 
-	public void eliminarSedeEmpresa(int id);// Elimina el AsignadoA DELETE
+	public void eliminarSedeEmpresa(int id);// Elimina la SedeEmpresa DELETE
 
 }

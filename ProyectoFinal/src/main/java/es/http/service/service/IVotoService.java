@@ -9,12 +9,12 @@ public interface IVotoService {
 	// Metodos del CRUD
 	public List<Voto> listarVoto(); // Listar All
 
-	public Voto guardarVoto(Voto Voto); // Guarda un AsignadoA CREATE
+	public Voto guardarVoto(Voto Voto); // Guarda un Voto CREATE
 
-	public Voto VotoXID(int id); // Leer datos de un AsignadoA READ
+	public Voto VotoXID(int id); // Leer datos de un Voto READ
 
-	public Voto actualizarVoto(Voto Voto); // Actualiza datos del AsignadoA UPDATE
+	public Voto actualizarVoto(Voto Voto); // Actualiza datos del Voto UPDATE
 
-	public void eliminarVoto(int id);// Elimina el AsignadoA DELETE
+	public void eliminarVoto(int id);// Elimina el Voto DELETE
 
 }

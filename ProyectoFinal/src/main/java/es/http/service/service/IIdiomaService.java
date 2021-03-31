@@ -9,12 +9,12 @@ public interface IIdiomaService {
 	// Metodos del CRUD
 	public List<Idioma> listarIdioma(); // Listar All
 
-	public Idioma guardarIdioma(Idioma Idioma); // Guarda un AsignadoA CREATE
+	public Idioma guardarIdioma(Idioma Idioma); // Guarda un Idioma CREATE
 
-	public Idioma IdiomaXID(int id); // Leer datos de un AsignadoA READ
+	public Idioma IdiomaXID(int id); // Leer datos de un Idioma READ
 
-	public Idioma actualizarIdioma(Idioma Idioma); // Actualiza datos del AsignadoA UPDATE
+	public Idioma actualizarIdioma(Idioma Idioma); // Actualiza datos del Idioma UPDATE
 
-	public void eliminarIdioma(int id);// Elimina el AsignadoA DELETE
+	public void eliminarIdioma(int id);// Elimina el Idioma DELETE
 
 }

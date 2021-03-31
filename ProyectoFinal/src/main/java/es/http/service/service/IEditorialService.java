@@ -9,12 +9,12 @@ public interface IEditorialService {
 	// Metodos del CRUD
 	public List<Editorial> listarEditorial(); // Listar All
 
-	public Editorial guardarEditorial(Editorial Editorial); // Guarda un AsignadoA CREATE
+	public Editorial guardarEditorial(Editorial Editorial); // Guarda un Autor CREATE
 
-	public Editorial EditorialXID(int id); // Leer datos de un AsignadoA READ
+	public Editorial EditorialXID(int id); // Leer datos de un Autor READ
 
-	public Editorial actualizarEditorial(Editorial Editorial); // Actualiza datos del AsignadoA UPDATE
+	public Editorial actualizarEditorial(Editorial Editorial); // Actualiza datos del Autor UPDATE
 
-	public void eliminarEditorial(int id);// Elimina el AsignadoA DELETE
+	public void eliminarEditorial(int id);// Elimina el Autor DELETE
 
 }
