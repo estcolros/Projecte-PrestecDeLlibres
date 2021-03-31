@@ -158,7 +158,9 @@ GET ID:/api/voto/{id}
 PUT:/api/voto/{id}
 POST:/api/votos
 DELETE:/api/voto/{id}
-```
+
+Login:
+POST: /login```
 
 ### Frontend
 
