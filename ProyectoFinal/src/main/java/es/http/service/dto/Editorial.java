@@ -4,6 +4,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -17,6 +19,7 @@ public class Editorial {
 
 	// Atributos de Editorial
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
 	@Column(name = "cod_editorial")
 	private int id;
 	@Column(name = "nombre")
@@ -31,7 +34,6 @@ public class Editorial {
 	}
 
 	public Editorial(int id, String nombre, List<Libro> libro) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.libro = libro;
@@ -67,7 +69,7 @@ public class Editorial {
 	// Método ToString
 	@Override
 	public String toString() {
-		return "Editorial [id=" + id + ", nombre=" + nombre + ", libro=" + libro + "]";
+		return "Editorial [id=" + id + ", nombre=" + nombre + "]";
 	}
 
 }

@@ -3,6 +3,7 @@ package es.http.service.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,12 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.http.service.dto.Notificacion;
 import es.http.service.service.NotificacionServiceImpl;
 
 @RestController
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 @RequestMapping("/api")
 public class NotificacionController {
 
@@ -33,14 +37,12 @@ public class NotificacionController {
 		return NotificacionServiceImpl.guardarNotificacion(Notificacion);
 	}
 
-	@GetMapping("/notificaciones/{id}")
+	@GetMapping("/notificacion/{id}")
 	public Notificacion NotificacionXID(@PathVariable(name = "id") int id) {
 
 		Notificacion Notificacion_xid = new Notificacion();
 
 		Notificacion_xid = NotificacionServiceImpl.NotificacionXID(id);
-
-		// System.out.println("Equipo XID: "+Notificacion_xid);
 
 		return Notificacion_xid;
 	}
@@ -56,11 +58,10 @@ public class NotificacionController {
 		Notificacion_seleccionado.setTrabajador(Notificacion.getTrabajador());
 		Notificacion_seleccionado.setLeido(Notificacion.getLeido());
 		Notificacion_seleccionado.setMensaje(Notificacion.getMensaje());
-		Notificacion_seleccionado.setId(Notificacion.getId());
+		Notificacion_seleccionado.setPrestamo(Notificacion.getPrestamo());
+		Notificacion_seleccionado.setTrabajadorrecibe(Notificacion.getTrabajadorrecibe());
 
 		Notificacion_actualizado = NotificacionServiceImpl.actualizarNotificacion(Notificacion_seleccionado);
-
-		// System.out.println("El Equipo actualizado es: "+ Equipo_actualizado);
 
 		return Notificacion_actualizado;
 	}

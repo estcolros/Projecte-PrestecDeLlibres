@@ -3,10 +3,13 @@ package es.http.service.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import es.http.service.dao.IAutorDAO;
 import es.http.service.dto.Autor;
 
 //Implementamos los métodos del service.
+@Service
 public class AutorServiceImpl implements IAutorService {
 
 	@Autowired

@@ -3,6 +3,7 @@ package es.http.service.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.http.service.service.LibroServiceImpl;
@@ -17,6 +19,8 @@ import es.http.service.service.LibroServiceImpl;
 import es.http.service.dto.Libro;
 
 @RestController
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 @RequestMapping("/api")
 
 public class LibroController {
@@ -35,14 +39,14 @@ public class LibroController {
 		return libroServiceImpl.guardarLibro(Libro);
 	}
 
-	@GetMapping("/libros/{id}")
+	@GetMapping("/libro/{id}")
 	public Libro LibroXID(@PathVariable(name = "id") int id) {
 
 		Libro Libro_xid = new Libro();
 
 		Libro_xid = libroServiceImpl.LibroXID(id);
 
-		// System.out.println("Equipo XID: "+Libro_xid);
+		
 
 		return Libro_xid;
 	}
@@ -59,17 +63,17 @@ public class LibroController {
 		Libro_seleccionado.setGenero(libro.getGenero());
 		Libro_seleccionado.setFecha(libro.getFecha());
 		Libro_seleccionado.setIsbn(libro.getIsbn());
-		Libro_seleccionado.setEjemplar(libro.getEjemplar());
-
+		Libro_seleccionado.setEditorial(libro.getEditorial());
+		Libro_seleccionado.setAutor(libro.getAutor());
+		Libro_seleccionado.setIdioma(libro.getIdioma());
+		
 		Libro_actualizado = libroServiceImpl.actualizarLibro(Libro_seleccionado);
-
-		// System.out.println("El Equipo actualizado es: "+ Equipo_actualizado);
 
 		return Libro_actualizado;
 	}
 
 	@DeleteMapping("/libro/{id}")
-	public void eleiminarLibro(@PathVariable(name = "id") int id) {
+	public void eliminarLibro(@PathVariable(name = "id") int id) {
 		libroServiceImpl.eliminarLibro(id);
 	}
 }

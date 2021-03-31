@@ -16,12 +16,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //Nos centramos en la tabla SedeEmpresa
 @Entity
-@Table(name = "SedeEmpresa")
+@Table(name = "sedeempresa")
 public class SedeEmpresa {
 
 	// Atributos de SedeEmpresa
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
+	@Column (name="cod_sede")
 	private int id;
 
 	@Column(name = "nombre") // no hace falta si se llama igual
@@ -31,20 +32,18 @@ public class SedeEmpresa {
 	private String localidad;
 
 	@OneToMany
-	@JoinColumn(name = "id")
-	private List<Ejemplar> Ejemplar;
+	@JoinColumn(name = "cod_ejemplar")
+	private List<Ejemplar> ejemplar;
 
 	// Constructores
 	public SedeEmpresa() {
-		super();
 	}
 
-	public SedeEmpresa(int id, String nombre, String localidad, List<es.http.service.dto.Ejemplar> ejemplar) {
-		super();
+	public SedeEmpresa(int id, String nombre, String localidad, List<Ejemplar> ejemplar) {
 		this.id = id;
 		this.nombre = nombre;
 		this.localidad = localidad;
-		Ejemplar = ejemplar;
+		this.ejemplar = ejemplar;
 	}
 
 	// Getters y Setters
@@ -75,18 +74,17 @@ public class SedeEmpresa {
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ejemplar")
 	public List<Ejemplar> getEjemplar() {
-		return Ejemplar;
+		return ejemplar;
 	}
 
 	public void setEjemplar(List<Ejemplar> ejemplar) {
-		Ejemplar = ejemplar;
+		ejemplar = ejemplar;
 	}
 
 	// Método ToString
 	@Override
 	public String toString() {
-		return "SedeEmpresa [id=" + id + ", nombre=" + nombre + ", localidad=" + localidad + ", Ejemplar=" + Ejemplar
-				+ "]";
+		return "SedeEmpresa [id=" + id + ", nombre=" + nombre + ", localidad=" + localidad + "]";
 	}
 
 }

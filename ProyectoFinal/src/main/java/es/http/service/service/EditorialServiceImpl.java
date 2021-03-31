@@ -3,11 +3,13 @@ package es.http.service.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import es.http.service.dto.Editorial;
 import es.http.service.dao.IEditorialDAO;
 
 //Implementamos los métodos del service.
+@Service
 public class EditorialServiceImpl implements IEditorialService {
 	@Autowired
 	IEditorialDAO IEditorialDAO;

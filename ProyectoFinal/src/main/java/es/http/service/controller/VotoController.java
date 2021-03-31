@@ -10,19 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import es.http.service.dto.Voto;
 import es.http.service.service.VotoServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@CrossOrigin(origins="*", methods= {RequestMethod.GET})
+@RequestMapping(value="/api") 
 public class VotoController {
 
 	@Autowired
 	VotoServiceImpl VotoServiceImpl;
 
-	@GetMapping("/voto")
+	@GetMapping("/votos")
 	public List<Voto> listarVoto() {
 		return VotoServiceImpl.listarVoto();
 	}
@@ -33,15 +36,12 @@ public class VotoController {
 		return VotoServiceImpl.guardarVoto(voto);
 	}
 
-	@GetMapping("/votos/{id}")
-	public Voto VotoXID(@PathVariable(name = "id") int id) {
+	@GetMapping("/voto/{id}")
+	public Voto VotoXID(@PathVariable(name = "id")@RequestBody int id) {
 
 		Voto Voto_xid = new Voto();
 
 		Voto_xid = VotoServiceImpl.VotoXID(id);
-
-		System.out.println("Voto XID: " + Voto_xid);
-
 		return Voto_xid;
 	}
 
@@ -52,17 +52,11 @@ public class VotoController {
 		Voto Voto_actualizado = new Voto();
 
 		Voto_seleccionado = VotoServiceImpl.VotoXID(id);
-
 		Voto_seleccionado.setOpinion(voto.getOpinion());
 		Voto_seleccionado.setCalificacion(voto.getCalificacion());
 		Voto_seleccionado.setId(voto.getId());
-		Voto_seleccionado.setCodigoEjemplar(voto.getCodigoEjemplar());
-		Voto_seleccionado.setPrestamo(voto.getPrestamo());
-
 		Voto_actualizado = VotoServiceImpl.actualizarVoto(Voto_seleccionado);
-
-		System.out.println("El Voto actualizado es: " + Voto_actualizado);
-
+		
 		return Voto_actualizado;
 	}
 

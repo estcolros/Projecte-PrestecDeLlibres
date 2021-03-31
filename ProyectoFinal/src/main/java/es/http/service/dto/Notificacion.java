@@ -5,8 +5,11 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,104 +23,117 @@ public class Notificacion {
 
 	// Atributos de Notificacion
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
 	@Column(name = "cod_notificacion")
 	private int id;
 	@Column(name = "mensaje")
 	private String mensaje;
 	@Column(name = "leido")
-	private String leido;
+	private int leido;
 
-	@OneToMany
-	@JoinColumn(name = "cod_notificacion")
-	private List<Trabajador> trabajador;
+	@ManyToOne
+	@JoinColumn(name = "cod_trabajador")
+	private Trabajador trabajador;
+	@ManyToOne(targetEntity=es.http.service.dto.Prestamo.class)
+	@JoinColumn(name= "cod_prestamo")
+	private Prestamo Prestamo;
 
+	@ManyToOne(targetEntity=es.http.service.dto.Trabajador.class)
+	@JoinColumn(name= "trabajador_recibe")
+	private Trabajador trabajadorrecibe;
+	
 	// Constructores
-	/**
-	 * 
-	 */
+	
 	public Notificacion() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	/**
-	 * @param id
-	 * @param mensaje
-	 * @param leido
-	 * @param trabajador
-	 */
-	public Notificacion(int id, String mensaje, String leido, List<Trabajador> trabajador) {
-		super();
-		this.id = id;
-		this.mensaje = mensaje;
-		this.leido = leido;
-		this.trabajador = trabajador;
-	}
 
 	// Getters y Setters
-	/**
-	 * @return the id
-	 */
+	
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
+
+	public Notificacion(int id, String mensaje, int leido, Trabajador trabajador, es.http.service.dto.Prestamo prestamo,Trabajador trabajadorrecibe) {
+		super();
+		this.id = id;
+		this.mensaje = mensaje;
+		this.leido = leido;
+		this.trabajador = trabajador;
+		Prestamo = prestamo;
+		this.trabajadorrecibe = trabajadorrecibe;
+	}
+
+
+	//Getters y Setters
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the mensaje
-	 */
+
 	public String getMensaje() {
 		return mensaje;
 	}
 
-	/**
-	 * @param mensaje the mensaje to set
-	 */
+	
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
 
-	/**
-	 * @return the leido
-	 */
-	public String getLeido() {
+
+	public int getLeido() {
 		return leido;
 	}
 
-	/**
-	 * @param leido the leido to set
-	 */
-	public void setLeido(String leido) {
+	
+	public void setLeido(int leido) {
 		this.leido = leido;
 	}
 
-	/**
-	 * @return the trabajador
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Trabajador")
-	public List<Trabajador> getTrabajador() {
+
+	
+	public Trabajador getTrabajador() {
 		return trabajador;
 	}
 
-	/**
-	 * @param trabajador the trabajador to set
-	 */
-	public void setTrabajador(List<Trabajador> trabajador) {
+
+	public void setTrabajador(Trabajador trabajador) {
 		this.trabajador = trabajador;
 	}
+	
+
+	public Prestamo getPrestamo() {
+		return Prestamo;
+	}
+
+	public void setPrestamo(Prestamo prestamo) {
+		Prestamo = prestamo;
+		
+	}
+	
+
+	public Trabajador getTrabajadorrecibe() {
+		return trabajadorrecibe;
+	}
+
+
+	public void setTrabajadorrecibe(Trabajador trabajadorrecibe) {
+		this.trabajadorrecibe = trabajadorrecibe;
+	}
+
 
 	// Método ToString
 	@Override
 	public String toString() {
 		return "Notificacion [id=" + id + ", mensaje=" + mensaje + ", leido=" + leido + ", trabajador=" + trabajador
-				+ "]";
+				+ ", trabajadorrecibe=" + trabajadorrecibe + "]";
 	}
+
+
+
+	
 
 }

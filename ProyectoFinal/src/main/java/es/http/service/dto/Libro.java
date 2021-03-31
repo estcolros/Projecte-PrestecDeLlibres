@@ -5,8 +5,11 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,6 +23,7 @@ public class Libro {
 
 	// Atributos de Libro
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
 	@Column(name = "cod_libro")
 	private int id;
 	@Column(name = "genero")
@@ -31,129 +35,130 @@ public class Libro {
 	@Column(name = "isbn")
 	private int isbn;
 
-	@OneToMany
-	@JoinColumn(name = "cod_ejemplar")
-	private List<Ejemplar> ejemplar;
+	@ManyToOne(targetEntity=es.http.service.dto.Editorial.class)
+	@JoinColumn(name = "cod_editorial")
+	private Editorial editorial;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Autor.class)
+	@JoinColumn(name="cod_autor")
+	private Autor autor;
+	
+	@ManyToOne(targetEntity=es.http.service.dto.Idioma.class)
+	@JoinColumn(name="cod_idioma")
+	private Idioma idioma;
 
+	
 	// Constructores
-	/**
-	 * 
-	 */
+	
+	
 	public Libro() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param genero
-	 * @param titulo
-	 * @param fecha
-	 * @param isbn
-	 * @param ejemplar
-	 */
-	public Libro(int id, String genero, String titulo, String fecha, int isbn, List<Ejemplar> ejemplar) {
-		super();
+
+	public Libro(int id, String genero, String titulo, String fecha, int isbn, Editorial editorial,Autor autor, Idioma idioma) {
 		this.id = id;
 		this.genero = genero;
 		this.titulo = titulo;
 		this.fecha = fecha;
 		this.isbn = isbn;
-		this.ejemplar = ejemplar;
+		this.editorial = editorial;
+		this.autor = autor;
+		this.idioma = idioma;
 	}
 
-	// Getters y Setters
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+	//Getters y Setters
 
-	/**
-	 * @param genero the genero to set
-	 */
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	/**
-	 * @param titulo the titulo to set
-	 */
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	/**
-	 * @param fecha the fecha to set
-	 */
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
-	/**
-	 * @param isbn the isbn to set
-	 */
-	public void setIsbn(int isbn) {
-		this.isbn = isbn;
-	}
-
-	/**
-	 * @param ejemplar the ejemplar to set
-	 */
-	public void setEjemplar(List<Ejemplar> ejemplar) {
-		this.ejemplar = ejemplar;
-	}
-
-	/**
-	 * @return the id
-	 */
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @return the genero
-	 */
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	public String getGenero() {
 		return genero;
 	}
 
-	/**
-	 * @return the titulo
-	 */
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+
 	public String getTitulo() {
 		return titulo;
 	}
 
-	/**
-	 * @return the fecha
-	 */
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+
 	public String getFecha() {
 		return fecha;
 	}
 
-	/**
-	 * @return the isbn
-	 */
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+
 	public int getIsbn() {
 		return isbn;
 	}
 
-	/**
-	 * @return the ejemplar
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Ejemplar")
-	public List<Ejemplar> getEjemplar() {
-		return ejemplar;
+
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
 	}
 
-	// Método ToString
+
+	public Editorial getEditorial() {
+		return editorial;
+	}
+
+
+	public void setEditorial(Editorial editorial) {
+		this.editorial = editorial;
+	}
+
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+
+	public Idioma getIdioma() {
+		return idioma;
+	}
+
+
+	public void setIdioma(Idioma idioma) {
+		this.idioma = idioma;
+	}
+
+
+	//Método toString
 	@Override
 	public String toString() {
-		return "Autor [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha=" + fecha + ", isbn=" + isbn
-				+ ", ejemplar=" + ejemplar + "]";
+		return "Libro [id=" + id + ", genero=" + genero + ", titulo=" + titulo + ", fecha="
+				+ fecha + ", isbn=" + isbn + ", editorial=" + editorial + ", idioma=" + idioma
+				+ "]";
 	}
+	
 
+	
+	
+	
 }

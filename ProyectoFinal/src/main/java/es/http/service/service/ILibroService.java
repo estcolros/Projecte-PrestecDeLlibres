@@ -13,7 +13,7 @@ public interface ILibroService {
 
 	public Libro LibroXID(int id); // Leer datos de un libro READ
 
-	public Libro actualizarLibro(Libro equipo); // Actualiza datos del libro UPDATE
+	public Libro actualizarLibro(Libro libro); // Actualiza datos del libro UPDATE
 
 	public void eliminarLibro(int id);// Elimina el libro DELETE
 

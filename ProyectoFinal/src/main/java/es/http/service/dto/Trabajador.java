@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,37 +22,36 @@ public class Trabajador {
 
 	// Atributos de Trabajador
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor e incrementa desde id final de db
+	@Column(name="cod_trabajador")
 	private int id;
 
-	@Column(name = "nombre") // no hace falta si se llama igual
+	@Column(name = "nombre") 
 	private String nombre;
-	@Column(name = "apellido1") // no hace falta si se llama igual
+	@Column(name = "apellido1") 
 	private String apellido1;
-	@Column(name = "apellido2") // no hace falta si se llama igual
+	@Column(name = "apellido2") 
 	private String apellido2;
-	@Column(name = "telefono") // no hace falta si se llama igual
+	@Column(name = "telefono") 
 	private String telefono;
-	@Column(name = "correo") // no hace falta si se llama igual
+	@Column(name = "correo") 
 	private String correo;
-	@Column(name = "DNI") // no hace falta si se llama igual
+	@Column(name = "DNI") 
 	private String dni;
-	@Column(name = "user") // no hace falta si se llama igual
-	private String user;
-	@Column(name = "password") // no hace falta si se llama igual
+	@Column(name = "user") 
+	private String username;
+	@Column(name = "password") 
 	private String password;
+	
+	
 
-	@OneToMany
-	@JoinColumn(name = "id")
-	private List<Notificacion> Notificacion;
+	
 
 	// Constructores
 	public Trabajador() {
 	}
 
-	public Trabajador(int id, String nombre, String apellido1, String apellido2, String telefono, String correo,
-			String dni, String user, String password, List<es.http.service.dto.Notificacion> notificacion) {
-		super();
+	public Trabajador(int id, String nombre, String apellido1, String apellido2, String telefono, String correo, String dni, String user, String password) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -59,9 +59,10 @@ public class Trabajador {
 		this.telefono = telefono;
 		this.correo = correo;
 		this.dni = dni;
-		this.user = user;
+		this.username = user;
 		this.password = password;
-		Notificacion = notificacion;
+
+		
 	}
 
 	// Getters y Setters
@@ -122,11 +123,11 @@ public class Trabajador {
 	}
 
 	public String getUser() {
-		return user;
+		return username;
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.username = user;
 	}
 
 	public String getPassword() {
@@ -137,22 +138,17 @@ public class Trabajador {
 		this.password = password;
 	}
 
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Notificacion")
-	public List<Notificacion> getNotificacion() {
-		return Notificacion;
-	}
-
-	public void setNotificacion(List<Notificacion> notificacion) {
-		Notificacion = notificacion;
-	}
 
 	// Método ToString
+	
 	@Override
 	public String toString() {
 		return "Trabajador [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
-				+ ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + ", user=" + user + ", password="
-				+ password + ", Notificacion=" + Notificacion + "]";
+				+ ", telefono=" + telefono + ", correo=" + correo + ", dni=" + dni + ", user=" + username + ", password="
+				+ password + "]";
 	}
+
+	
+	
 
 }
