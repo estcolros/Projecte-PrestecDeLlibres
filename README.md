@@ -80,6 +80,13 @@ DataBase          MySQL Workbench and MySQL Community Server, Version 8.0.22
 Peticiones        Postman, Versión 8.0.7 
 ```
 
+#### Seguridad
+
+```
+ Se requiere autentificación por Token.
+
+```
+
 #### API REST Endpoints
 
 ```
@@ -160,7 +167,8 @@ POST:/api/votos
 DELETE:/api/voto/{id}
 
 Login:
-POST: /login```
+POST: /login
+```
 
 ### Frontend
 
@@ -172,5 +180,24 @@ Core              HTML, CSS, JavaScript,jQuery,TypeScript, Boostrap, Angular
 Framework         Angular
 DataBase          MySQL Workbench and MySQL Community Server, Version 8.0.22 
 ```
+
+#### Seguridad
+
+```
+Se requiere autentificación de usuario y contraseña.
+```
+
+#### Pagina de login:
+![login](https://user-images.githubusercontent.com/78431881/113297374-d2243680-92fa-11eb-8028-4111392022c8.png)
+#### Pagina de registro:
+![registro](https://user-images.githubusercontent.com/78431881/113297398-d8b2ae00-92fa-11eb-8ba4-bbdb1094ba83.png)
+#### Pagina de home:
+![home](https://user-images.githubusercontent.com/78431881/113297442-e9632400-92fa-11eb-82f9-ef5d55f24328.png)
+
+
+
+
+
+
 
 
