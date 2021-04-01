@@ -193,6 +193,10 @@ Se requiere autentificación de usuario y contraseña.
 ![registro](https://user-images.githubusercontent.com/78431881/113297398-d8b2ae00-92fa-11eb-8ba4-bbdb1094ba83.png)
 #### Pagina de home:
 ![home](https://user-images.githubusercontent.com/78431881/113297442-e9632400-92fa-11eb-82f9-ef5d55f24328.png)
+#### Pagina de best sellers:
+![best sellers](https://user-images.githubusercontent.com/78431881/113297699-3c3cdb80-92fb-11eb-96f9-610ae4995d4c.png)
+#### Pagina de listar libros:
+![unknown](https://user-images.githubusercontent.com/78431881/113297619-1d3e4980-92fb-11eb-8540-d89bec6fad31.png)
 
 
 
